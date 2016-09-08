@@ -1,0 +1,768 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <meta name="viewport" content="width=device-width,user-scalable=no,initial-scale=1,maximum-scale=1">
+      <title>DVC API - Quixey Documentation</title>
+      <link rel="canonical" href="http://docs.quixey.com/">
+      <meta name="author" content="Quixey">
+    <meta property="og:url" content="http://docs.quixey.com/">
+    <meta property="og:title" content="Quixey Documentation">
+    <meta property="og:image" content="http://docs.quixey.com///">
+    <link rel="shortcut icon" type="image/x-icon" href="/assets/images/favicon.ico">
+    <link rel="icon" type="image/x-icon" href="/assets/images/favicon.ico">
+    <link href="//fonts.googleapis.com/css?family=Roboto:300,400,500,700" rel="stylesheet">
+    <link href="//cdnjs.cloudflare.com/ajax/libs/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="/assets/styles/app-6b2afac0d7.css">
+    <link rel="stylesheet" href="/assets/styles/vendor-bf6c14925e.css">
+  </head>
+  <body>
+    <!--[if lt IE 9]>
+    <p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
+    <![endif]-->
+<div id="sidedrawer" class="mui--no-user-select">
+  <div class="q-logo">
+    <a href="http://www.quixey.com"><img src="/assets/quixey_blue-56e6756d00.png"></a>
+    Docs
+  </div>
+  <div class="mui-divider"></div>
+  <ul id="q-nav">
+      <li>
+        <a class="q-navitem" href="..">Product Overview</a>
+      </li>
+      <li>
+        <a class="q-navitem" href="../android_sdk/">Android SDK</a>
+      </li>
+      <li>
+        <a class="q-navitem active" href=".">DVC API</a>
+      <ul class="q-toc">
+        <li class="q-toc__item"><a href="#overview" class="q-toc__link">Overview</a>
+        </li>
+        <li class="q-toc__item"><a href="#authentication" class="q-toc__link">Authentication</a>
+        </li>
+        <li class="q-toc__item"><a href="#versioning" class="q-toc__link">Versioning</a>
+        </li>
+        <li class="q-toc__item"><a href="#errors" class="q-toc__link">Errors</a>
+        </li>
+        <li class="q-toc__item"><a href="#endpoints" class="q-toc__link">Endpoints</a>
+        </li>
+      </ul>
+      </li>
+      <li>
+        <a class="q-navitem" href="../qapps/">App Reference</a>
+      </li>
+      <li>
+        <a class="q-navitem" href="../schema_reference/">DVC Entity Schemas</a>
+      </li>
+  </ul>
+  <section class="mui--text-center q-download mui--divider-top">
+    <p class="mui--text-white">Download Quixey's Search App</p>
+    <a href="https://play.google.com/store/apps/details?id=com.quixey.android.search">
+      <img alt="Android app on Google Play" src="https://developer.android.com/images/brand/en_app_rgb_wo_45.png">
+    </a>
+  </section>
+</div>
+<header id="header" class="q-header">
+<div class="mui-appbar mui--appbar-line-height mui--z1">
+    <div class="mui-container-fluid q-flex">
+      <div class="q-flex__cell q-flex__cell--shrink">
+          <a class="sidedrawer-toggle mui--visible-xs-inline-block mui--visible-sm-inline-block js-show-sidedrawer">☰</a>
+          <a class="sidedrawer-toggle mui--hidden-xs mui--hidden-sm js-hide-sidedrawer">☰</a>
+      </div>
+      <div class="q-flex__cell q-flex__cell--stretch mui--text-title">
+        <span class="q-flex__ellipsis">DVC API</span>
+      </div>
+      <div class="q-flex__cell q-flex__cell--shrink mui--text-right">
+        <div class="q-header-search">
+            <label for="q-search" class="fa fa-search q-header-search__icon"></label>
+            <input type="search" class="q-header-search__input" placeholder="Search..." autocomplete="off" id="q-search">
+        </div>
+      </div>
+    </div>
+  </div>
+</header>
+<div id="content-wrapper">
+  <div class="mui-container-fluid page">
+    <h1 id="quixey-api-reference">Quixey API Reference</h1>
+<h2 id="overview">Overview</h2>
+<p>Quixey's API is a set of endpoints that allow you to retrieve information about apps and app content. {more here}</p>
+<p>Some use cases for Quixey API include the following:</p>
+<ul>
+<li>Mobile app developers - provide your users with advanced search capabilities that includes app and app content results.</li>
+<li>Social Marketing Partner - search for and generate content for Ad units in various formats including Twitter Ad Cards, Facebook Open Graph, and Schema.org.</li>
+</ul>
+<h2 id="authentication">Authentication</h2>
+<p>Authentication credentials are required for all requests made through Quixey's API endpoints.   Credentials consist of a Quixey-generated partner ID and secret key.   Do not share your secret API keys in publicly accessible areas such GitHub, client-side code, and so forth.</p>
+<h2 id="versioning">Versioning</h2>
+<p>All API calls should contain a version string contained withing the base portion of the URL.  For example:</p>
+<pre><code class="hljs undefined">https://apiserver.quixey.com/ext/v1.1/dvcs</code></pre><h2 id="errors">Errors</h2>
+<p>All failure conditions are returned in the response as an object contiaining a message, HTTP status and Quixey return code.</p>
+<div class="mui-panel" style="overflow-x:auto"><table class="mui-table mui-table--bordered"><thead><tr>
+<th style="text-align:left">Name</th>
+<th style="text-align:left">Description</th>
+</tr>
+</thead><tbody><tr>
+<td style="text-align:left">msg</td>
+<td style="text-align:left">String describing the nature of the error</td>
+</tr>
+<tr>
+<td style="text-align:left">status</td>
+<td style="text-align:left">HTTP status code (see list for details)</td>
+</tr>
+<tr>
+<td style="text-align:left">rc</td>
+<td style="text-align:left">Return Code.  Possible values include:</td>
+</tr>
+</tbody></table></div><p>Example error response</p>
+<pre><code class="hljs json">{
+  <span class="hljs-attr">"msg"</span>: <span class="hljs-string">"Public access to Quixey's API has been disabled. You must provide a partner ID. Please contact partners@quixey.com for a verified partner account."</span>,
+  <span class="hljs-attr">"status"</span>: <span class="hljs-number">401</span>,
+  <span class="hljs-attr">"rc"</span>: <span class="hljs-number">10</span>
+ }</code></pre><h3 id="http-status-code-summary">HTTP Status Code Summary</h3>
+<p>The table below lists the most commone HTTP Status Codes returned by Quixey's API servers.</p>
+<div class="mui-panel" style="overflow-x:auto"><table class="mui-table mui-table--bordered"><thead><tr>
+<th style="text-align:center">Code</th>
+<th style="text-align:left">Meaning</th>
+</tr>
+</thead><tbody><tr>
+<td style="text-align:center">200</td>
+<td style="text-align:left">OK -- Everything worked as expected.</td>
+</tr>
+<tr>
+<td style="text-align:center">400</td>
+<td style="text-align:left">Bad Request -- The request was unacceptable, often due to missing a required parameter.</td>
+</tr>
+<tr>
+<td style="text-align:center">401</td>
+<td style="text-align:left">Unauthorized -- No valid API key provided.</td>
+</tr>
+<tr>
+<td style="text-align:center">402</td>
+<td style="text-align:left">Request Failed -- The parameters were valid but the request failed.</td>
+</tr>
+<tr>
+<td style="text-align:center">404</td>
+<td style="text-align:left">Not Found -- The requested resource doesn't exist.</td>
+</tr>
+<tr>
+<td style="text-align:center">409</td>
+<td style="text-align:left">Conflict -- The request conflicts with another request (perhaps due to using the same idempotent key).</td>
+</tr>
+<tr>
+<td style="text-align:center">429</td>
+<td style="text-align:left">Too Many Requests -- Too many requests hit the API too quickly. We recommend an exponential backoff of your requests.</td>
+</tr>
+<tr>
+<td style="text-align:center">500</td>
+<td style="text-align:left">Internal Server Error - Something went wrong on Quixey's end.</td>
+</tr>
+<tr>
+<td style="text-align:center">502</td>
+<td style="text-align:left">Bad Gateway -- One of Quixey's upstream servers received an invalid response</td>
+</tr>
+<tr>
+<td style="text-align:center">503</td>
+<td style="text-align:left">Service Unavailable -- The server is currently unable to handle the request due to a temporary overloading or maintenance of the server.</td>
+</tr>
+<tr>
+<td style="text-align:center">504</td>
+<td style="text-align:left">Gateway Timeout -- The server, while acting as a gateway or proxy, did not receive a timely response from the upstream server specified by the URI</td>
+</tr>
+</tbody></table></div><h2 id="endpoints">Endpoints</h2>
+<h3 id="-search">/search</h3>
+<p>Returns a set of Quixey Deep View Card results in a variety of formats.</p>
+<h4 id="request-parameters">Request Parameters</h4>
+<div class="mui-panel" style="overflow-x:auto"><table class="mui-table mui-table--bordered"><thead><tr>
+<th style="text-align:left">Name</th>
+<th style="text-align:left">Type</th>
+<th style="text-align:center">Validated</th>
+<th style="text-align:left">Description</th>
+</tr>
+</thead><tbody><tr>
+<td style="text-align:left">partner_id</td>
+<td style="text-align:left">string</td>
+<td style="text-align:center">Y</td>
+<td style="text-align:left"><strong>[Required]</strong> Quixey-generated partner ID</td>
+</tr>
+<tr>
+<td style="text-align:left">partner_secret</td>
+<td style="text-align:left">string</td>
+<td style="text-align:center">Y</td>
+<td style="text-align:left"><strong>[Required]</strong> Quixey-generated partner key</td>
+</tr>
+<tr>
+<td style="text-align:left">q</td>
+<td style="text-align:left">string</td>
+<td style="text-align:center">Y</td>
+<td style="text-align:left"><strong>[Required]</strong> the full query text. Ex: q=thai</td>
+</tr>
+<tr>
+<td style="text-align:left">geo</td>
+<td style="text-align:left">string</td>
+<td style="text-align:center">Y</td>
+<td style="text-align:left"><strong>[Required]</strong> The geographic location of the user in latitude and longitude using decimal degrees with negative numbers for South and West; an example location in Palo Alto, CA is geo=37.422054,-122.136725</td>
+</tr>
+<tr>
+<td style="text-align:left">apps</td>
+<td style="text-align:left">json list</td>
+<td style="text-align:center">Y</td>
+<td style="text-align:left">List of apps for which search results will be limited.  Ex: apps=[askme.com,snapdeal.com,expedia.com]</td>
+</tr>
+<tr>
+<td style="text-align:left">types</td>
+<td style="text-align:left">json list</td>
+<td style="text-align:center">N</td>
+<td style="text-align:left">List of types for which search results will be limited. Specific types can be obtained through the /apps API endpoint response. Ex: types=[Event]</td>
+</tr>
+<tr>
+<td style="text-align:left">limit</td>
+<td style="text-align:left">int</td>
+<td style="text-align:center">Y</td>
+<td style="text-align:left">The maximum number of Deep View Cards to return; up to a maximum of 20. Default = 10.</td>
+</tr>
+<tr>
+<td style="text-align:left">dv_limit</td>
+<td style="text-align:left">int</td>
+<td style="text-align:center">N</td>
+<td style="text-align:left">The maximum number of Deep Views to return for each Deep View Card. Default = 5.</td>
+</tr>
+<tr>
+<td style="text-align:left">locale</td>
+<td style="text-align:left">string</td>
+<td style="text-align:center">Y</td>
+<td style="text-align:left">Sets the locale for a search.  When available, descriptions, prices, and download links will be localized to the given locale.<br>Ex: locale=en_US<br>Notes:<ul><li>China partners are limited to zh_CN</li><li>US partners are limited to en_US, en_SG, and en_GB.</li></ul></td>
+</tr>
+<tr>
+<td style="text-align:left">fix_spelling</td>
+<td style="text-align:left">boolean</td>
+<td style="text-align:center">Y</td>
+<td style="text-align:left">Used to correct spelling in the q parameter. Default=true</td>
+</tr>
+<tr>
+<td style="text-align:left">platform</td>
+<td style="text-align:left">json list</td>
+<td style="text-align:center">N</td>
+<td style="text-align:left">A JSON-encoded array of Quixey store IDs. If this field is present, only return Deep View Cards with editions that are available on one or more of the specified stores<br>Notes:<ul><li>The store names are not validated.</li><li>Supported stores are 'itunes' (iOS) and 'googleplay' (Android).</li><li>Upper and lowercase do not effect the results</li></ul><br>Ex: platform=[googleplay,yunos]</td>
+</tr>
+<tr>
+<td style="text-align:left">format</td>
+<td style="text-align:left">string</td>
+<td style="text-align:center">Y</td>
+<td style="text-align:left">How to format the response output. Allowable values are: <ul><li>twitter.ad_card</li><li>quixey</li><li>open_graph</li></ul></td>
+</tr>
+<tr>
+<td style="text-align:left">mode</td>
+<td style="text-align:left">json list</td>
+<td style="text-align:center">Y</td>
+<td style="text-align:left">Specifies the type of search to perform and the results that appear in the response object.<br>Allowable values are:<ul><li>app = app search results</li><li>deep = deep search results</li><li>app_deep = both app and deep search results</li></ul><br>Default=deep</td>
+</tr>
+</tbody></table></div><h4 id="response-structure">Response Structure</h4>
+<p>The <code>/search</code> response is primarily an ordered set of Deep View Cards (DVCs) from one or more apps. The first DVC in the response is highest ranked by Quixey should suffice for most use cases.  This number is controlled by the ‘limit’ request parameter.</p>
+<p><code>Root</code></p>
+<div class="mui-panel" style="overflow-x:auto"><table class="mui-table mui-table--bordered"><thead><tr>
+<th style="text-align:left">Field</th>
+<th style="text-align:left">Type</th>
+<th style="text-align:center">Present</th>
+<th style="text-align:left">Description</th>
+</tr>
+</thead><tbody><tr>
+<td style="text-align:left">deepViewCards</td>
+<td style="text-align:left">DeepViewCard[]</td>
+<td style="text-align:center">Y</td>
+<td style="text-align:left">An unordered set of Deep View Cards</td>
+</tr>
+<tr>
+<td style="text-align:left">searchId</td>
+<td style="text-align:left">string</td>
+<td style="text-align:center">Y</td>
+<td style="text-align:left">Quixey-assigned search ID for this search request</td>
+</tr>
+<tr>
+<td style="text-align:left">sessionId</td>
+<td style="text-align:left">string</td>
+<td style="text-align:center">Y</td>
+<td style="text-align:left">Quixey-assigned session ID for this search request</td>
+</tr>
+</tbody></table></div><p><code>DeepViewCard</code> -  a grouping of similar search results or Deep Views from a particular app.  Contains the following fields:</p>
+<div class="mui-panel" style="overflow-x:auto"><table class="mui-table mui-table--bordered"><thead><tr>
+<th style="text-align:left">Field</th>
+<th style="text-align:left">Type</th>
+<th style="text-align:center">Present</th>
+<th style="text-align:left">Description</th>
+</tr>
+</thead><tbody><tr>
+<td style="text-align:left">deepViews</td>
+<td style="text-align:left">DeepView[]</td>
+<td style="text-align:center">Y</td>
+<td style="text-align:left">A set of Deep Views</td>
+</tr>
+<tr>
+<td style="text-align:left">@id</td>
+<td style="text-align:left">FURL</td>
+<td style="text-align:center">Y</td>
+<td style="text-align:left">A Quixey-assigned identifier for the card. This value should be unique among all cards in the response</td>
+</tr>
+<tr>
+<td style="text-align:left">cardName</td>
+<td style="text-align:left">string</td>
+<td style="text-align:center">N</td>
+<td style="text-align:left">A human readable name for card</td>
+</tr>
+<tr>
+<td style="text-align:left">appName</td>
+<td style="text-align:left">string</td>
+<td style="text-align:center">N</td>
+<td style="text-align:left">A human readable name for the App that provided  content for the card</td>
+</tr>
+<tr>
+<td style="text-align:left">ttl</td>
+<td style="text-align:left">long</td>
+<td style="text-align:center">Y</td>
+<td style="text-align:left">Time-to-live.  The average freshness in seconds for the Quixey function used to generate the card. Default 86,400s or 1 day.</td>
+</tr>
+</tbody></table></div><p><code>DeepView</code> - set of data describing the details for a particular entity within an app.  Contains the following fields.  </p>
+<div class="mui-panel" style="overflow-x:auto"><table class="mui-table mui-table--bordered"><thead><tr>
+<th style="text-align:left">Field</th>
+<th style="text-align:left">Type</th>
+<th style="text-align:center">Present</th>
+<th style="text-align:left">Description</th>
+</tr>
+</thead><tbody><tr>
+<td style="text-align:left">format.name</td>
+<td style="text-align:left">Format</td>
+<td style="text-align:center">Y</td>
+<td style="text-align:left">The deep view content formatted by Format.</td>
+</tr>
+<tr>
+<td style="text-align:left">@id</td>
+<td style="text-align:left">FURL</td>
+<td style="text-align:center">Y</td>
+<td style="text-align:left">A Quixey Functional URL of the deep state</td>
+</tr>
+<tr>
+<td style="text-align:left">url</td>
+<td style="text-align:left">URL</td>
+<td style="text-align:center">Y</td>
+<td style="text-align:left">The best web URL for the deep state. If not available, should navigate to the app store.</td>
+</tr>
+<tr>
+<td style="text-align:left">geo</td>
+<td style="text-align:left">Geolocation</td>
+<td style="text-align:center">N</td>
+<td style="text-align:left">The geolocation of the object.</td>
+</tr>
+</tbody></table></div><p><code>Geolocation</code></p>
+<div class="mui-panel" style="overflow-x:auto"><table class="mui-table mui-table--bordered"><thead><tr>
+<th style="text-align:left">Field</th>
+<th style="text-align:left">Type</th>
+<th style="text-align:center">Present</th>
+<th style="text-align:left">Description</th>
+</tr>
+</thead><tbody><tr>
+<td style="text-align:left">latitude</td>
+<td style="text-align:left">Double</td>
+<td style="text-align:center">Y</td>
+<td style="text-align:left">Latitude of location.</td>
+</tr>
+<tr>
+<td style="text-align:left">longitude</td>
+<td style="text-align:left">Double</td>
+<td style="text-align:center">Y</td>
+<td style="text-align:left">Longitude of location.</td>
+</tr>
+<tr>
+<td style="text-align:left">distanceMeters</td>
+<td style="text-align:left">Double</td>
+<td style="text-align:center">Y</td>
+<td style="text-align:left">Distance in meters.</td>
+</tr>
+<tr>
+<td style="text-align:left">distanceMiles</td>
+<td style="text-align:left">Double</td>
+<td style="text-align:center">Y</td>
+<td style="text-align:left">Distance in miles.</td>
+</tr>
+</tbody></table></div><p><code>debug</code></p>
+<div class="mui-panel" style="overflow-x:auto"><table class="mui-table mui-table--bordered"><thead><tr>
+<th style="text-align:left">Field</th>
+<th style="text-align:left">Type</th>
+<th style="text-align:center">Present</th>
+<th style="text-align:left">Description</th>
+</tr>
+</thead><tbody><tr>
+<td style="text-align:left">warnings</td>
+<td style="text-align:left">string[]</td>
+<td style="text-align:center">Y</td>
+<td style="text-align:left">warning logs</td>
+</tr>
+<tr>
+<td style="text-align:left">errors</td>
+<td style="text-align:left">string[]</td>
+<td style="text-align:center">Y</td>
+<td style="text-align:left">error logs</td>
+</tr>
+<tr>
+<td style="text-align:left">exceptions</td>
+<td style="text-align:left">string[]</td>
+<td style="text-align:center">Y</td>
+<td style="text-align:left">exception logs</td>
+</tr>
+<tr>
+<td style="text-align:left">info</td>
+<td style="text-align:left">string[]</td>
+<td style="text-align:center">Y</td>
+<td style="text-align:left">info logs</td>
+</tr>
+</tbody></table></div><h4 id="format-types">Format Types</h4>
+<p><code>twitter.ad_card</code></p>
+<div class="mui-panel" style="overflow-x:auto"><table class="mui-table mui-table--bordered"><thead><tr>
+<th style="text-align:left">Field</th>
+<th style="text-align:left">Type</th>
+<th style="text-align:center">Present</th>
+<th style="text-align:left">Description</th>
+</tr>
+</thead><tbody><tr>
+<td style="text-align:left">@type</td>
+<td style="text-align:left">string</td>
+<td style="text-align:center">Y</td>
+<td style="text-align:left">Currently this has default value as "image_app_download"</td>
+</tr>
+<tr>
+<td style="text-align:left">name</td>
+<td style="text-align:left">string</td>
+<td style="text-align:center">Y</td>
+<td style="text-align:left">It is deepviewcontent's display content's name/product_name.</td>
+</tr>
+<tr>
+<td style="text-align:left">description</td>
+<td style="text-align:left">string</td>
+<td style="text-align:center">N</td>
+<td style="text-align:left">Not supported in v1.1.</td>
+</tr>
+<tr>
+<td style="text-align:left">image_url</td>
+<td style="text-align:left">URL</td>
+<td style="text-align:center">N</td>
+<td style="text-align:left">It is deepviewcontent's display content's image/product_image.</td>
+</tr>
+<tr>
+<td style="text-align:left">app_cta</td>
+<td style="text-align:left">string</td>
+<td style="text-align:center">Y</td>
+<td style="text-align:left">Currently this has default value as "INSTALL_OPEN"</td>
+</tr>
+<tr>
+<td style="text-align:left">iphone_deep_link</td>
+<td style="text-align:left">URL</td>
+<td style="text-align:center">N</td>
+<td style="text-align:left">It is deep view's stateAccessInfo's accessurl for edition having platform = ios</td>
+</tr>
+<tr>
+<td style="text-align:left">googleplay_deep_link</td>
+<td style="text-align:left">URL</td>
+<td style="text-align:center">N</td>
+<td style="text-align:left">It is deep view's stateAccessInfo's accessurl for edition having platform = android</td>
+</tr>
+</tbody></table></div><p><code>open_graph</code></p>
+<div class="mui-panel" style="overflow-x:auto"><table class="mui-table mui-table--bordered"><thead><tr>
+<th style="text-align:left">Field</th>
+<th style="text-align:left">Type</th>
+<th style="text-align:center">Present</th>
+<th style="text-align:left">Description</th>
+</tr>
+</thead><tbody><tr>
+<td style="text-align:left">og:title</td>
+<td style="text-align:left">string</td>
+<td style="text-align:center">Y</td>
+<td style="text-align:left">It is deepviewcontent's display content's name.</td>
+</tr>
+<tr>
+<td style="text-align:left">og:image</td>
+<td style="text-align:left">string</td>
+<td style="text-align:center">N</td>
+<td style="text-align:left">It is deepviewcontent's display content's image.</td>
+</tr>
+<tr>
+<td style="text-align:left">og:description</td>
+<td style="text-align:left">string</td>
+<td style="text-align:center">N</td>
+<td style="text-align:left">It is deepviewcontent's display content's description.</td>
+</tr>
+<tr>
+<td style="text-align:left">og:url</td>
+<td style="text-align:left">string</td>
+<td style="text-align:center">N</td>
+<td style="text-align:left">It is deepviewcontent's display content's url.</td>
+</tr>
+<tr>
+<td style="text-align:left">og:site_name</td>
+<td style="text-align:left">string</td>
+<td style="text-align:center">Y</td>
+<td style="text-align:left">this is appName.</td>
+</tr>
+<tr>
+<td style="text-align:left">og:type</td>
+<td style="text-align:left">string</td>
+<td style="text-align:center">Y</td>
+<td style="text-align:left">"website" constant value for this format</td>
+</tr>
+</tbody></table></div><p><code>quixey</code></p>
+<p>The output format of <code>quixey</code> results will vary depending on the entity type being returned.  Please refer to the list of supported entity schema definitions in the document <a href="/schema_reference">DVC Entity Schemas</a> for details</p>
+<h3 id="sample-mode-deep-">Sample (mode = deep)</h3>
+<p>The sample HTTP request</p>
+<pre><code class="hljs http">GET https://apiserver.quixey.com/ext/v1.1/dvcs/search?q=soccer&amp;partner_id=123456789&amp;partner_secret=seseme&amp;format=twitter.ad_card&amp;dv_limit=2&amp;mode=deep&amp;geo=-40,72&amp;limit=2</code></pre><p>will generate the following response object</p>
+<pre><code class="hljs json">{
+  <span class="hljs-attr">"deepViewCards"</span>: [
+    {
+      <span class="hljs-attr">"deepViews"</span>: [
+        {
+          <span class="hljs-attr">"url"</span>: <span class="hljs-string">"http://www.foxnews.com/tech/2016/08/03/soccer-streaming-facebook-to-live-stream-manchester-united-s-game-against-everton.html"</span>,
+          <span class="hljs-attr">"quixey"</span>: {
+            <span class="hljs-attr">"@context"</span>: <span class="hljs-string">"http://schemas.quixey.com/2016/02/us-direct/scrape/foxnews.com/article/v1.0/scrape.json"</span>,
+            <span class="hljs-attr">"url"</span>: <span class="hljs-string">"http://www.foxnews.com/tech/2016/08/03/soccer-streaming-facebook-to-live-stream-manchester-united-s-game-against-everton.html"</span>,
+            <span class="hljs-attr">"@id"</span>: <span class="hljs-string">"func://foxnews.com/showArticle/www.foxnews.com/tech/2016/08/03/soccer-streaming-facebook-to-live-stream-manchester-united-s-game-against-everton.html"</span>,
+            <span class="hljs-attr">"@type"</span>: <span class="hljs-string">"NewsArticle"</span>,
+            <span class="hljs-attr">"@vertical"</span>: <span class="hljs-string">"News"</span>,
+            <span class="hljs-attr">"quality"</span>: <span class="hljs-number">0</span>,
+            <span class="hljs-attr">"httpStatusCode"</span>: <span class="hljs-number">200</span>,
+            <span class="hljs-attr">"created"</span>: <span class="hljs-string">"2016-08-04T21:22:48Z"</span>,
+            <span class="hljs-attr">"crawled"</span>: <span class="hljs-string">"2016-08-04T21:22:48Z"</span>,
+            <span class="hljs-attr">"name"</span>: <span class="hljs-string">"Soccer streaming: Facebook to live stream Manchester United’s game against Everton"</span>,
+            <span class="hljs-attr">"image"</span>: <span class="hljs-string">"http://www.foxnews.com/content/dam/fox-news/images/2016/08/03/waynerooney.jpg"</span>,
+            <span class="hljs-attr">"category"</span>: <span class="hljs-string">"tech"</span>,
+            <span class="hljs-attr">"datePublished"</span>: <span class="hljs-number">1470249960</span>,
+            <span class="hljs-attr">"description"</span>: <span class="hljs-string">"Facebook Live will stream its first English soccer game Wednesday when the social network shows the charity soccer match between Premier League teams Manchester United and Everton."</span>,
+            <span class="hljs-attr">"expires"</span>: <span class="hljs-string">"2016-08-06T18:46:00.000Z"</span>,
+            <span class="hljs-attr">"releaseDate"</span>: <span class="hljs-string">"2016-08-03T18:46:00.000Z"</span>
+          },
+          <span class="hljs-attr">"@id"</span>: <span class="hljs-string">"func://foxnews.com/showArticle/www.foxnews.com/tech/2016/08/03/soccer-streaming-facebook-to-live-stream-manchester-united-s-game-against-everton.html"</span>
+        },
+        {
+          <span class="hljs-attr">"url"</span>: <span class="hljs-string">"http://www.foxnews.com/sports/2016/08/03/solo-jeered-as-us-women-win-olympic-soccer-opener-against-new-zealand.html"</span>,
+          <span class="hljs-attr">"quixey"</span>: {
+            <span class="hljs-attr">"category"</span>: <span class="hljs-string">"sports"</span>,
+            <span class="hljs-attr">"expires"</span>: <span class="hljs-string">"2016-08-06T17:29:00.000Z"</span>,
+            <span class="hljs-attr">"name"</span>: <span class="hljs-string">"Solo jeered as US women win Olympic soccer opener against New Zealand"</span>,
+            <span class="hljs-attr">"@vertical"</span>: <span class="hljs-string">"News"</span>,
+            <span class="hljs-attr">"url"</span>: <span class="hljs-string">"http://www.foxnews.com/sports/2016/08/03/solo-jeered-as-us-women-win-olympic-soccer-opener-against-new-zealand.html"</span>,
+            <span class="hljs-attr">"quality"</span>: <span class="hljs-number">0</span>,
+            <span class="hljs-attr">"image"</span>: <span class="hljs-string">"http://www.foxnews.com/content/dam/fox-news/images/2016/08/03/rio-olympics-soccer-w_cham1280720.jpg"</span>,
+            <span class="hljs-attr">"created"</span>: <span class="hljs-string">"2016-08-04T15:24:46Z"</span>,
+            <span class="hljs-attr">"datePublished"</span>: <span class="hljs-number">1470245340</span>,
+            <span class="hljs-attr">"releaseDate"</span>: <span class="hljs-string">"2016-08-03T17:29:00.000Z"</span>,
+            <span class="hljs-attr">"crawled"</span>: <span class="hljs-string">"2016-08-04T15:24:46Z"</span>,
+            <span class="hljs-attr">"@context"</span>: <span class="hljs-string">"http://schemas.quixey.com/2016/02/us-direct/scrape/foxnews.com/article/v1.0/scrape.json"</span>,
+            <span class="hljs-attr">"httpStatusCode"</span>: <span class="hljs-number">200</span>,
+            <span class="hljs-attr">"@id"</span>: <span class="hljs-string">"func://foxnews.com/showArticle/www.foxnews.com/sports/2016/08/03/solo-jeered-as-us-women-win-olympic-soccer-opener-against-new-zealand.html"</span>,
+            <span class="hljs-attr">"@type"</span>: <span class="hljs-string">"NewsArticle"</span>,
+            <span class="hljs-attr">"description"</span>: <span class="hljs-string">"Carli Lloyd and Alex Morgan scored a goal in each half as the U.S. women's soccer team defeated New Zealand 2-0 in its debut at the Rio Games on Wednesday, getting off to a solid start in its attempt to win a fourth straight Olympic gold medal."</span>
+          },
+          <span class="hljs-attr">"@id"</span>: <span class="hljs-string">"func://foxnews.com/showArticle/www.foxnews.com/sports/2016/08/03/solo-jeered-as-us-women-win-olympic-soccer-opener-against-new-zealand.html"</span>
+        }
+      ],
+      <span class="hljs-attr">"appName"</span>: <span class="hljs-string">"FoxNews"</span>,
+      <span class="hljs-attr">"@id"</span>: <span class="hljs-string">"func://foxnews.com/searchInside-showArticle?q=soccer"</span>,
+      <span class="hljs-attr">"ttl"</span>: <span class="hljs-number">86400</span>
+    },
+    {
+      <span class="hljs-attr">"deepViews"</span>: [
+        {
+          <span class="hljs-attr">"url"</span>: <span class="hljs-string">"http://abcnews.go.com/Sports/wireStory/nigeria-soccer-teams-flight-delayed-olympic-debut-41116763"</span>,
+          <span class="hljs-attr">"quixey"</span>: {
+            <span class="hljs-attr">"@context"</span>: <span class="hljs-string">"http://schemas.quixey.com/2015/02/us-direct/scrape/abcnews.go.com/news/article/v1.0/scrape.json"</span>,
+            <span class="hljs-attr">"url"</span>: <span class="hljs-string">"http://abcnews.go.com/Sports/wireStory/nigeria-soccer-teams-flight-delayed-olympic-debut-41116763"</span>,
+            <span class="hljs-attr">"@id"</span>: <span class="hljs-string">"func://abcnews.go.com/showNewsItem/abcnews.go.com/Sports/wireStory/nigeria-soccer-teams-flight-delayed-olympic-debut-41116763"</span>,
+            <span class="hljs-attr">"@type"</span>: <span class="hljs-string">"NewsArticle"</span>,
+            <span class="hljs-attr">"@vertical"</span>: <span class="hljs-string">"News"</span>,
+            <span class="hljs-attr">"quality"</span>: <span class="hljs-number">0</span>,
+            <span class="hljs-attr">"httpStatusCode"</span>: <span class="hljs-number">200</span>,
+            <span class="hljs-attr">"created"</span>: <span class="hljs-string">"2016-08-04T21:22:49Z"</span>,
+            <span class="hljs-attr">"crawled"</span>: <span class="hljs-string">"2016-08-04T21:22:49Z"</span>,
+            <span class="hljs-attr">"name"</span>: <span class="hljs-string">"Nigeria Soccer Team's Flight Delayed Before Olympic Debut"</span>,
+            <span class="hljs-attr">"category"</span>: <span class="hljs-string">"Sports"</span>,
+            <span class="hljs-attr">"datePublished"</span>: <span class="hljs-number">1470324625</span>,
+            <span class="hljs-attr">"description"</span>: <span class="hljs-string">"The Nigeria men's soccer team had its trip to the Rio Olympics delayed in Atlanta, forcing it to rush to Brazil on a last-minute flight"</span>,
+            <span class="hljs-attr">"expires"</span>: <span class="hljs-string">"2016-08-07T15:30:25.000Z"</span>,
+            <span class="hljs-attr">"releaseDate"</span>: <span class="hljs-string">"2016-08-04T15:30:25.000Z"</span>
+          },
+          <span class="hljs-attr">"@id"</span>: <span class="hljs-string">"func://abcnews.go.com/showNewsItem/abcnews.go.com/Sports/wireStory/nigeria-soccer-teams-flight-delayed-olympic-debut-41116763"</span>
+        },
+        {
+          <span class="hljs-attr">"url"</span>: <span class="hljs-string">"http://abcnews.go.com/Sports/building-stronger-bond-daughter-soccer/story?id=41100152"</span>,
+          <span class="hljs-attr">"quixey"</span>: {
+            <span class="hljs-attr">"category"</span>: <span class="hljs-string">"Sports"</span>,
+            <span class="hljs-attr">"expires"</span>: <span class="hljs-string">"2016-08-06T20:10:27.000Z"</span>,
+            <span class="hljs-attr">"name"</span>: <span class="hljs-string">"Building a stronger bond with my daughter through soccer"</span>,
+            <span class="hljs-attr">"@vertical"</span>: <span class="hljs-string">"News"</span>,
+            <span class="hljs-attr">"url"</span>: <span class="hljs-string">"http://abcnews.go.com/Sports/building-stronger-bond-daughter-soccer/story?id=41100152"</span>,
+            <span class="hljs-attr">"quality"</span>: <span class="hljs-number">0</span>,
+            <span class="hljs-attr">"created"</span>: <span class="hljs-string">"2016-08-04T00:20:53Z"</span>,
+            <span class="hljs-attr">"datePublished"</span>: <span class="hljs-number">1470255027</span>,
+            <span class="hljs-attr">"releaseDate"</span>: <span class="hljs-string">"2016-08-03T20:10:27.000Z"</span>,
+            <span class="hljs-attr">"crawled"</span>: <span class="hljs-string">"2016-08-04T00:20:53Z"</span>,
+            <span class="hljs-attr">"@context"</span>: <span class="hljs-string">"http://schemas.quixey.com/2015/02/us-direct/scrape/abcnews.go.com/news/article/v1.0/scrape.json"</span>,
+            <span class="hljs-attr">"httpStatusCode"</span>: <span class="hljs-number">200</span>,
+            <span class="hljs-attr">"@id"</span>: <span class="hljs-string">"func://abcnews.go.com/showNewsItem/abcnews.go.com/Sports/building-stronger-bond-daughter-soccer/story?id=41100152"</span>,
+            <span class="hljs-attr">"@type"</span>: <span class="hljs-string">"NewsArticle"</span>,
+            <span class="hljs-attr">"description"</span>: <span class="hljs-string">"As President Obama might say, my daughter is a badass. I don't say that just because she's my daughter. As the president did when he met the members of the U.S. women's national soccer team after they won the World Cup last year, I offer that description up in the broadest of terms.                        That same term applies to many of my daughter's teammates through years of club soccer that have seen us travel around the South and across the country. I've seen them get knocked down and bounce right back up. I've seen them limp around the field, trying to shake off a twisted ankle to stay in the game. I've seen them suffer difficult losses and play in pouring rain and frigid cold.     I'm glad my daughter, Lucy, is part of it. And I'm glad I have been there to see it.     I am a soccer dad, twice over. My son is in college now, but he also played travel soccer for years. I loved watching him play and seeing his confidence grow as he kept moving up to better teams..."</span>
+          },
+          <span class="hljs-attr">"@id"</span>: <span class="hljs-string">"func://abcnews.go.com/showNewsItem/abcnews.go.com/Sports/building-stronger-bond-daughter-soccer/story?id=41100152"</span>
+        }
+      ],
+      <span class="hljs-attr">"appName"</span>: <span class="hljs-string">"ABCNews"</span>,
+      <span class="hljs-attr">"@id"</span>: <span class="hljs-string">"func://abcnews.go.com/searchInside-showNewsItem?q=soccer"</span>,
+      <span class="hljs-attr">"ttl"</span>: <span class="hljs-number">86400</span>
+    }
+  ],
+  <span class="hljs-attr">"searchId"</span>: <span class="hljs-string">"b3acbfe5c5811d964f631a371d804055004c863a"</span>,
+  <span class="hljs-attr">"sessionId"</span>: <span class="hljs-string">"2ed1804ed1411320b7c7d485454dfc8d8a772bb3"</span>
+}</code></pre><h3 id="sample-mode-app-">Sample (mode = app)</h3>
+<p>The sample HTTP request</p>
+<pre><code class="hljs bash">https://apiserver.quixey.com/ext/v1.1/dvcs/search?q=caltrain&amp;partner_id=12345&amp;partner_secret=sesame&amp;<span class="hljs-built_in">limit</span>=3&amp;dv_limit=2&amp;mode=app&amp;geo=37.3860517,-122.0838511</code></pre><p>will generate the following response object</p>
+<pre><code class="hljs json">{
+  <span class="hljs-attr">"deepViewCards"</span>: [
+    {
+      <span class="hljs-attr">"deepViews"</span>: [
+        {
+          <span class="hljs-attr">"url"</span>: <span class="hljs-string">"https://itunes.apple.com/us/app/caltrain/id949802017?mt=8"</span>,
+          <span class="hljs-attr">"quixey"</span>: {
+            <span class="hljs-attr">"id"</span>: <span class="hljs-number">3300199116218756929</span>,
+            <span class="hljs-attr">"rating"</span>: <span class="hljs-number">5</span>,
+            <span class="hljs-attr">"currency"</span>: <span class="hljs-string">"USD"</span>,
+            <span class="hljs-attr">"price"</span>: <span class="hljs-number">0</span>,
+            <span class="hljs-attr">"platformIds"</span>: [
+              <span class="hljs-number">2015</span>,
+              <span class="hljs-number">2004</span>
+            ],
+            <span class="hljs-attr">"name"</span>: <span class="hljs-string">"Caltrain"</span>,
+            <span class="hljs-attr">"url"</span>: <span class="hljs-string">"https://itunes.apple.com/us/app/caltrain/id949802017?mt=8"</span>,
+            <span class="hljs-attr">"iconUrl"</span>: <span class="hljs-string">"http://a4.mzstatic.com/us/r30/Purple49/v4/38/0c/09/380c09f0-7ea6-6567-47f7-e565506a7b7f/icon350x350.jpeg"</span>,
+            <span class="hljs-attr">"description"</span>: <span class="hljs-string">"The must-have app for the Caltrain commuter!"</span>,
+            <span class="hljs-attr">"category"</span>: <span class="hljs-string">"Travel"</span>,
+            <span class="hljs-attr">"downloads"</span>: <span class="hljs-number">160</span>,
+            <span class="hljs-attr">"ratingCount"</span>: <span class="hljs-number">32</span>,
+            <span class="hljs-attr">"storeSpecific"</span>: {},
+            <span class="hljs-attr">"store"</span>: <span class="hljs-string">"itunes"</span>
+          },
+          <span class="hljs-attr">"@id"</span>: <span class="hljs-string">"qedition://itunes/949802017"</span>
+        },
+        {
+          <span class="hljs-attr">"url"</span>: <span class="hljs-string">"https://play.google.com/store/apps/details?id=interprone.caltrain"</span>,
+          <span class="hljs-attr">"quixey"</span>: {
+            <span class="hljs-attr">"id"</span>: <span class="hljs-number">6654027037506133291</span>,
+            <span class="hljs-attr">"rating"</span>: <span class="hljs-number">4.5679011345</span>,
+            <span class="hljs-attr">"currency"</span>: <span class="hljs-string">"USD"</span>,
+            <span class="hljs-attr">"price"</span>: <span class="hljs-number">0</span>,
+            <span class="hljs-attr">"platformIds"</span>: [
+              <span class="hljs-number">2005</span>
+            ],
+            <span class="hljs-attr">"name"</span>: <span class="hljs-string">"Caltrain"</span>,
+            <span class="hljs-attr">"url"</span>: <span class="hljs-string">"https://play.google.com/store/apps/details?id=interprone.caltrain"</span>,
+            <span class="hljs-attr">"iconUrl"</span>: <span class="hljs-string">"https://lh5.ggpht.com/YVXgkgxu1gIDQM5VRD1ZlJTWjTOdrGZs2JqCsWWPFFmxGUnPfwdr-UCjv6onUYHSlMhi=w300"</span>,
+            <span class="hljs-attr">"description"</span>: <span class="hljs-string">"The must-have app for the Caltrain commuter! Now available on Android! "</span>,
+            <span class="hljs-attr">"category"</span>: <span class="hljs-string">"Transportation"</span>,
+            <span class="hljs-attr">"downloads"</span>: <span class="hljs-number">10000</span>,
+            <span class="hljs-attr">"ratingCount"</span>: <span class="hljs-number">324</span>,
+            <span class="hljs-attr">"storeSpecific"</span>: {
+              <span class="hljs-attr">"packageId"</span>: <span class="hljs-string">"interprone.caltrain"</span>,
+              <span class="hljs-attr">"contentRating"</span>: <span class="hljs-string">"Rated for 3+"</span>
+            },
+            <span class="hljs-attr">"store"</span>: <span class="hljs-string">"googleplay"</span>
+          },
+          <span class="hljs-attr">"@id"</span>: <span class="hljs-string">"qedition://googleplay/interprone.caltrain"</span>
+        }
+      ],
+      <span class="hljs-attr">"appName"</span>: <span class="hljs-string">"Caltrain"</span>,
+      <span class="hljs-attr">"@id"</span>: <span class="hljs-string">"http://quixey/apps/8951724273772530058"</span>,
+      <span class="hljs-attr">"ttl"</span>: <span class="hljs-number">86400</span>
+    },
+    {
+      <span class="hljs-attr">"deepViews"</span>: [
+        {
+          <span class="hljs-attr">"url"</span>: <span class="hljs-string">"https://play.google.com/store/apps/details?id=com.getgoodcode.bart"</span>,
+          <span class="hljs-attr">"quixey"</span>: {
+            <span class="hljs-attr">"id"</span>: <span class="hljs-number">7167425689985126794</span>,
+            <span class="hljs-attr">"rating"</span>: <span class="hljs-number">4.3720192909</span>,
+            <span class="hljs-attr">"currency"</span>: <span class="hljs-string">"USD"</span>,
+            <span class="hljs-attr">"price"</span>: <span class="hljs-number">0</span>,
+            <span class="hljs-attr">"platformIds"</span>: [
+              <span class="hljs-number">2005</span>
+            ],
+            <span class="hljs-attr">"name"</span>: <span class="hljs-string">"Super BART (and Caltrain)"</span>,
+            <span class="hljs-attr">"url"</span>: <span class="hljs-string">"https://play.google.com/store/apps/details?id=com.getgoodcode.bart"</span>,
+            <span class="hljs-attr">"iconUrl"</span>: <span class="hljs-string">"https://lh6.ggpht.com/bOAhYyzWw7OCYGniP6kzs1wacw_tEcQFl0wyakimNq6HsMin4wDctqHYEWoSvOmjFJc=w300"</span>,
+            <span class="hljs-attr">"description"</span>: <span class="hljs-string">"Super BART is a clean and simple BART and Caltrain schedule you can access anywhere, anytime. Just select when and where you want to go. "</span>,
+            <span class="hljs-attr">"category"</span>: <span class="hljs-string">"Transportation"</span>,
+            <span class="hljs-attr">"downloads"</span>: <span class="hljs-number">50000</span>,
+            <span class="hljs-attr">"ratingCount"</span>: <span class="hljs-number">629</span>,
+            <span class="hljs-attr">"storeSpecific"</span>: {
+              <span class="hljs-attr">"packageId"</span>: <span class="hljs-string">"com.getgoodcode.bart"</span>,
+              <span class="hljs-attr">"contentRating"</span>: <span class="hljs-string">"Rated for 3+"</span>
+            },
+            <span class="hljs-attr">"store"</span>: <span class="hljs-string">"googleplay"</span>
+          },
+          <span class="hljs-attr">"@id"</span>: <span class="hljs-string">"qedition://googleplay/com.getgoodcode.bart"</span>
+        }
+      ],
+      <span class="hljs-attr">"appName"</span>: <span class="hljs-string">"Super BART (and Caltrain)"</span>,
+      <span class="hljs-attr">"@id"</span>: <span class="hljs-string">"http://quixey/apps/7814218429582816213"</span>,
+      <span class="hljs-attr">"ttl"</span>: <span class="hljs-number">86400</span>
+    },
+    {
+      <span class="hljs-attr">"deepViews"</span>: [
+        {
+          <span class="hljs-attr">"url"</span>: <span class="hljs-string">"https://play.google.com/store/apps/details?id=com.valencialabs.caltraindroid"</span>,
+          <span class="hljs-attr">"quixey"</span>: {
+            <span class="hljs-attr">"id"</span>: <span class="hljs-number">8813353557638389300</span>,
+            <span class="hljs-attr">"rating"</span>: <span class="hljs-number">4.5833334923</span>,
+            <span class="hljs-attr">"currency"</span>: <span class="hljs-string">"USD"</span>,
+            <span class="hljs-attr">"price"</span>: <span class="hljs-number">0</span>,
+            <span class="hljs-attr">"platformIds"</span>: [
+              <span class="hljs-number">2005</span>
+            ],
+            <span class="hljs-attr">"name"</span>: <span class="hljs-string">"Caltrain Droid"</span>,
+            <span class="hljs-attr">"url"</span>: <span class="hljs-string">"https://play.google.com/store/apps/details?id=com.valencialabs.caltraindroid"</span>,
+            <span class="hljs-attr">"iconUrl"</span>: <span class="hljs-string">"https://lh5.ggpht.com/6bxfF5rYjJuqq06HJnsNVDm4NuqGJyKEiV3QjkE6rXmVCcz3nCC74bNqOh_0vL3h4Q=w300"</span>,
+            <span class="hljs-attr">"description"</span>: <span class="hljs-string">"Caltrain Droid is the top Caltrain app for Android. "</span>,
+            <span class="hljs-attr">"category"</span>: <span class="hljs-string">"Travel &amp; Local"</span>,
+            <span class="hljs-attr">"downloads"</span>: <span class="hljs-number">50000</span>,
+            <span class="hljs-attr">"ratingCount"</span>: <span class="hljs-number">1046</span>,
+            <span class="hljs-attr">"storeSpecific"</span>: {
+              <span class="hljs-attr">"packageId"</span>: <span class="hljs-string">"com.valencialabs.caltraindroid"</span>,
+              <span class="hljs-attr">"contentRating"</span>: <span class="hljs-string">"Everyone"</span>
+            },
+            <span class="hljs-attr">"store"</span>: <span class="hljs-string">"googleplay"</span>
+          },
+          <span class="hljs-attr">"@id"</span>: <span class="hljs-string">"qedition://googleplay/com.valencialabs.caltraindroid"</span>
+        }
+      ],
+      <span class="hljs-attr">"appName"</span>: <span class="hljs-string">"Caltrain Droid"</span>,
+      <span class="hljs-attr">"@id"</span>: <span class="hljs-string">"http://quixey/apps/7682242924663119134"</span>,
+      <span class="hljs-attr">"ttl"</span>: <span class="hljs-number">86400</span>
+    }
+  ],
+  <span class="hljs-attr">"searchId"</span>: <span class="hljs-string">"6a452084b3fcc246f20714c789f96b7b7163c8ca"</span>,
+  <span class="hljs-attr">"sessionId"</span>: <span class="hljs-string">"617bf6f572ce354ddf62f93987b6949e7976de17"</span>
+}</code></pre>
+  </div>
+</div>
+<footer id="footer">
+  <div class="mui-container-fluid">
+    <nav class="mui-row" role="navigation">
+      <div class="mui-col-sm-10 mui-col-sm-offset-1">
+        <ul class="mui-list--inline mui--text-body2 mui--text-light">
+          <li><a href="http://www.quixey.com/privacy">Privacy Policy</a></li>
+          <li><a href="http://www.quixey.com/terms">Terms of Service</a></li>
+          <li><a href="https://twitter.com/quixey"><i class="fa fa-twitter" aria-hidden="true"></i>&nbsp;Twitter</a></li>
+          <li><a href="https://www.facebook.com/quixey"><i class="fa fa-facebook-official" aria-hidden="true"></i>&nbsp;Facebook</a></li>
+        </ul>
+        <div class="mui--text-caption mui--text-light">&copy; 2016 Quixey. <span class="buildinfo"> Production build, version 0.1.0</span></div>
+      </div>
+    </nav>
+  </div>
+</footer>
+    <script src="/assets/scripts/vendor-e836acbc9e.js"></script>
+    <script src="/assets/scripts/app-1a3a19fb04.js"></script>
+  </body>
+</html>

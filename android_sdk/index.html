@@ -1,0 +1,780 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <meta name="viewport" content="width=device-width,user-scalable=no,initial-scale=1,maximum-scale=1">
+      <title>Android SDK - Quixey Documentation</title>
+      <link rel="canonical" href="http://docs.quixey.com/">
+      <meta name="author" content="Quixey">
+    <meta property="og:url" content="http://docs.quixey.com/">
+    <meta property="og:title" content="Quixey Documentation">
+    <meta property="og:image" content="http://docs.quixey.com///">
+    <link rel="shortcut icon" type="image/x-icon" href="/assets/images/favicon.ico">
+    <link rel="icon" type="image/x-icon" href="/assets/images/favicon.ico">
+    <link href="//fonts.googleapis.com/css?family=Roboto:300,400,500,700" rel="stylesheet">
+    <link href="//cdnjs.cloudflare.com/ajax/libs/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="/assets/styles/app-6b2afac0d7.css">
+    <link rel="stylesheet" href="/assets/styles/vendor-bf6c14925e.css">
+  </head>
+  <body>
+    <!--[if lt IE 9]>
+    <p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
+    <![endif]-->
+<div id="sidedrawer" class="mui--no-user-select">
+  <div class="q-logo">
+    <a href="http://www.quixey.com"><img src="/assets/quixey_blue-56e6756d00.png"></a>
+    Docs
+  </div>
+  <div class="mui-divider"></div>
+  <ul id="q-nav">
+      <li>
+        <a class="q-navitem" href="..">Product Overview</a>
+      </li>
+      <li>
+        <a class="q-navitem active" href=".">Android SDK</a>
+      <ul class="q-toc">
+        <li class="q-toc__item"><a href="#overview" class="q-toc__link">Overview</a>
+        </li>
+        <li class="q-toc__item"><a href="#prerequisites" class="q-toc__link">Prerequisites</a>
+        </li>
+        <li class="q-toc__item"><a href="#integration-steps" class="q-toc__link">Integration Steps</a>
+        </li>
+        <li class="q-toc__item"><a href="#quixey-discovery" class="q-toc__link">Quixey Discovery</a>
+        </li>
+        <li class="q-toc__item"><a href="#quixey-widgets" class="q-toc__link">Quixey Widgets</a>
+        </li>
+      </ul>
+      </li>
+      <li>
+        <a class="q-navitem" href="../api_reference/">DVC API</a>
+      </li>
+      <li>
+        <a class="q-navitem" href="../qapps/">App Reference</a>
+      </li>
+      <li>
+        <a class="q-navitem" href="../schema_reference/">DVC Entity Schemas</a>
+      </li>
+  </ul>
+  <section class="mui--text-center q-download mui--divider-top">
+    <p class="mui--text-white">Download Quixey's Search App</p>
+    <a href="https://play.google.com/store/apps/details?id=com.quixey.android.search">
+      <img alt="Android app on Google Play" src="https://developer.android.com/images/brand/en_app_rgb_wo_45.png">
+    </a>
+  </section>
+</div>
+<header id="header" class="q-header">
+<div class="mui-appbar mui--appbar-line-height mui--z1">
+    <div class="mui-container-fluid q-flex">
+      <div class="q-flex__cell q-flex__cell--shrink">
+          <a class="sidedrawer-toggle mui--visible-xs-inline-block mui--visible-sm-inline-block js-show-sidedrawer">☰</a>
+          <a class="sidedrawer-toggle mui--hidden-xs mui--hidden-sm js-hide-sidedrawer">☰</a>
+      </div>
+      <div class="q-flex__cell q-flex__cell--stretch mui--text-title">
+        <span class="q-flex__ellipsis">Android SDK</span>
+      </div>
+      <div class="q-flex__cell q-flex__cell--shrink mui--text-right">
+        <div class="q-header-search">
+            <label for="q-search" class="fa fa-search q-header-search__icon"></label>
+            <input type="search" class="q-header-search__input" placeholder="Search..." autocomplete="off" id="q-search">
+        </div>
+      </div>
+    </div>
+  </div>
+</header>
+<div id="content-wrapper">
+  <div class="mui-container-fluid page">
+    <h1 id="quixey-mobile-sdk-for-android">Quixey Mobile SDK for Android</h1>
+<h2 id="overview">Overview</h2>
+<p>The Quixey Mobile SDK for Android is a totally customizable SDK that is built for partners and third-party app developers and is fast and easy to integrate into device platforms and mobile apps. Quixey powers app search and discovery for major manufacturers, carriers, search engines, and web-sites across the globe. Quixey enables partners to create engaging user experiences that can be monetized successfully.</p>
+<h3 id="highlights-of-the-quixey-mobile-sdk-for-android">Highlights of the Quixey Mobile SDK for Android</h3>
+<p>This SDK provides access to the most relevant search and discovery results for contextual queries powered by Quixey's advanced Functional Search® through a search bar widget and a user-interest discovery widget. The following Quixey features are included:</p>
+<ul>
+<li><strong><em>Functional Search</em></strong> —  A type of contextual user query that returns results for requested tasks and activities from apps and the app ecosystem. <ul>
+<li>Supports complex multi-word searches that describe functions the user intends to perform, for example “book a flight”, “buy movie tickets”, or “find food”. </li>
+<li>Uses information such as location, time, user intent, and associated context to match and rank the search results from Quixey's rich deep view repository. </li>
+<li>Returns both static and dynamic search results that can complete the task, deep linking directly into the functionality and content inside of apps. </li>
+<li>Launches apps directly from the search bar with fallback to the mobile web or Google Play Store when the app is not already installed on the device.</li>
+</ul>
+</li>
+<li><strong><em>Deep View Card</em></strong> <strong><em>(DVC)</em></strong> — An appealing concise expression of an app’s inner state, content, and functionality in a highly visual form. <ul>
+<li>Helps users to rapidly compare content and search results across multiple apps. </li>
+<li>Supports stacks of cards organized into categories, subcategories, and personalized named favorites.</li>
+<li>Provides customized Deep View Cards for a curated brand experience.</li>
+<li>Associates Functional URLs to a deep state, deep linking to actions within an app.</li>
+</ul>
+</li>
+<li><strong><em>Discovery</em></strong> — A display of featured and categorical collections or stacks of Deep View Cards. <ul>
+<li>Supports browsing to discover new app content based on user interest and context.</li>
+<li>Curates and personalizes content, allowing users to save favorites and name new stacks.</li>
+<li>Shares content and apps with friends and displays friends’ shared favorites.</li>
+<li>Gives partners leverage to monetize their platforms.</li>
+<li>Engages users with rich, curated brand experiences.</li>
+</ul>
+</li>
+</ul>
+<h3 id="build-variants">Build Variants</h3>
+<p>The Quixey Mobile SDK for Android supports the following build variants so that partners and third-party app developers can integrate Quixey’s features based on their business requirements.</p>
+<p><strong><em>Quixey Basic</em></strong> — Provides a search bar and a rendering view to render Deep View Cards based on a user-entered query. These are the most basic features of the SDK. Example code can be found in <a href="QxySample/sample-search"><code>QxySample/sample-search</code></a>. </p>
+<div class="screenshots"><br><figure><img src="/images/Quixey_Basic-Home-fb0c61fc4b.png" alt="Quixey Basic Home"><figcaption>Quixey Basic Home</figcaption></figure><figure><img src="/images/Quixey_Basic-SERP-0b65e80ead.png" alt="Quixey Basic SERP"><figcaption>Quixey Basic SERP</figcaption></figure><br></div>
+<p><strong><em>Quixey Lite</em></strong> — Provides all the features of Quixey Basic while adding device search, supports a default view of user-interest Deep View Cards, and displays Now cards for calendar events, traffic updates, app usage, currency conversion, and other features. Example code can be found in <a href="QxySample/sample-home"><code>QxySample/sample-home</code></a>.</p>
+<div class="screenshots"><br><figure><img src="/images/Quixey_Lite-Home-17427cc2d5.png" alt="Quixey Lite Home"><figcaption>Quixey Lite Home</figcaption></figure><figure><img src="/images/Quixey_Lite-SERP-32e5242547.png" alt="Quixey Lite SERP"><figcaption>Quixey Lite SERP</figcaption></figure><br></div>
+<p><strong><em>Quixey Full</em></strong> — Provides all the features of Quixey Lite while adding Deep View Card history, saving cards by user profile, and a tutorial. This is the largest build variant and provides the full power of Quixey Functional Search. Example code can be found in <a href="QxySample/sample-screens"><code>QxySample/sample-screens</code></a>.</p>
+<div class="screenshots"><br><figure><img src="/images/Quixey_Full-Home-fcb0c3bb3e.png" alt="Quixey Full Home"><figcaption>Quixey Full Home</figcaption></figure><figure><img src="/images/Quixey_Full-Nearby-90e975b752.png" alt="Quixey Full Nearby"><figcaption>Quixey Full Nearby</figcaption></figure><figure><img src="/images/Quixey_Full-Screens-23e6263505.png" alt="Quixey Full Screens"><figcaption>Quixey Full Screens</figcaption></figure><figure><img src="/images/Quixey_Full-Personal-32b3150008.png" alt="Quixey Full Personal"><figcaption>Quixey Full Personal</figcaption></figure><br></div>
+<h2 id="prerequisites">Prerequisites</h2>
+<p>Before starting integration, make sure you have been issued the following from Quixey:</p>
+<ul>
+<li><strong>Partner ID</strong> (<code>partner_id</code>) — unique partner API key for authentication.</li>
+<li><strong>Partner Secret</strong> (<code>partner_secret</code>)  — partner secret key for authentication.</li>
+<li><strong>Optional App Default View</strong> — customization to use a partner-specific default view.</li>
+</ul>
+<p>See the section on <a href="#headPartnerConfiguration">adding your partner configuration</a> for more details on Quixey’s configuration options.</p>
+<p>The following are prerequisites for integration:</p>
+<ul>
+<li><strong>Android 4.2</strong> — API level 17 ( <a href="http://developer.android.com/about/versions/android-4.2.html">JELLY_BEAN_MR1</a> ) or later.</li>
+<li><strong>Process Architecture</strong> — ARM, Intel, and MIPS devices, each in 32-bit and 64-bit flavors.</li>
+<li><strong>Dependencies</strong> — see the section on <a href="#headLibraryDeps">Third-Party Libraries</a> for a list of Android project dependencies. </li>
+</ul>
+<h3 id="permissions">Permissions</h3>
+<p>Quixey's SDK requires various Android permissions to operate.  </p>
+<p>The following normal permissions are used by all build variants:</p>
+<ul>
+<li><code>ACCESS_NETWORK_STATE</code></li>
+<li><code>ACCESS_WIFI_STATE</code></li>
+<li><code>INTERNET</code></li>
+<li><code>RECEIVE_BOOT_COMPLETED</code></li>
+<li><code>VIBRATE</code></li>
+<li><code>WAKE_LOCK</code></li>
+</ul>
+<p>Depending on the build variant, the following additional Android OS permissions are required:</p>
+<ul>
+<li><strong>Calendar Group</strong> — <code>READ_CALENDAR</code> </li>
+<li><strong>Contacts Group</strong> — <code>READ_CONTACTS</code>, <code>GET_ACCOUNTS</code> </li>
+<li><strong>Location Group</strong> — <code>ACCESS_FINE_LOCATION</code>, <code>ACCESS_COARSE_LOCATION</code></li>
+<li><strong>SMS Group</strong> — <code>READ_SMS</code></li>
+<li><strong>Storage Group</strong> — <code>READ_EXTERNAL_STORAGE</code>,  <code>WRITE_EXTERNAL_STORAGE</code> (enforced at API level 19 or later)</li>
+</ul>
+<p>Please note the following for each build variant:</p>
+<ul>
+<li><strong>Quixey Basic</strong> needs Location Group permissions.</li>
+<li><strong>Quixey Lite</strong> additionally needs <code>PACKAGE_USAGE_STATS</code>, Calendar Group, Contacts Group, and SMS Group permissions.</li>
+<li><strong>Quixey Full</strong> additionally needs Storage Group permissions.</li>
+</ul>
+<blockquote>
+<p><strong>Note:</strong> A Quixey home screen or launcher app may use system-level permissions if pre-installed on devices in the <code>/system/app</code> directory.</p>
+</blockquote>
+<p>If you plan to use the Quixey Now cards feature, you will also need the permission <code>android.permission.PACKAGE_USAGE_STATS</code>, which is a system-level permission to provide access to device usage history and statistics. The user of the device can grant this permission through the <strong>Settings</strong> application.  The manifest file of the <strong>Quixey Full</strong> sample <a href="QxySample/sample-screens/src/main/AndroidManifest.xml"><code>QxySample/sample-screens/src/main/AndroidManifest.xml</code></a> contains the following example of how this is declared:</p>
+<pre><code class="hljs xml"><span class="hljs-tag">&lt;<span class="hljs-name">uses-permission</span> <span class="hljs-attr">android:name</span>=<span class="hljs-string">"android.permission.PACKAGE_USAGE_STATS"</span>
+        <span class="hljs-attr">tools:ignore</span>=<span class="hljs-string">"ProtectedPermissions"</span> /&gt;</span></code></pre><h3 id="-a-name-headlibrarydeps-a-third-party-libraries"><a name="headLibraryDeps"></a>Third-Party Libraries</h3>
+<p>Quixey utilizes the following third-party libraries: </p>
+<div class="mui-panel" style="overflow-x:auto"><table class="mui-table mui-table--bordered"><thead><tr>
+<th>Library</th>
+<th>License</th>
+<th>URL</th>
+<th>Description</th>
+</tr>
+</thead><tbody><tr>
+<td>Android&nbsp;Support&nbsp;Library,&nbsp;including:  <br><a href="https://developer.android.com/tools/support-library/features.html#v7-appcompat">appcompat-v7</a>  <br><a href="http://developer.android.com/tools/support-library/features.html#v7-cardview">cardview-v7</a><br><a href="http://developer.android.com/tools/support-library/features.html#v7-palette">palette-v7</a><br><a href="http://developer.android.com/tools/support-library/features.html#v7-recyclerview">recyclerview-v7</a><br><a href="http://developer.android.com/tools/support-library/features.html#v13">support-v13</a><br><a href="http://developer.android.com/tools/support-library/features.html#design">design</a><br><a href="https://developer.android.com/topic/libraries/support-library/features.html#multidex">multidex</a></td>
+<td><a href="http://www.apache.org/licenses/LICENSE-2.0">Apache License, Version 2.0</a></td>
+<td><a href="https://developer.android.com/topic/libraries/support-library/setup.html">Android Support Library Setup</a></td>
+<td>Backward-compatible versions of new features. UI elements that are not included in the framework. Miscellaneous utilities.</td>
+</tr>
+<tr>
+<td>Google Play Services</td>
+<td><a href="http://www.apache.org/licenses/LICENSE-2.0">Apache License, Version 2.0</a></td>
+<td><a href="https://developers.google.com/android/guides/setup">Setting Up Google Play Services</a></td>
+<td>Google-powered features with automatic platform updates distributed as an APK through the Google Play store. </td>
+</tr>
+<tr>
+<td>Gson <br><a href="http://mvnrepository.com/artifact/com.google.code.gson/gson/2.6.2">gson-2.6.2.jar</a></td>
+<td><a href="http://www.apache.org/licenses/LICENSE-2.0">Apache License, Version 2.0</a></td>
+<td><a href="https://github.com/google/gson">google-gson on GitHub</a></td>
+<td>A Java serialization/deserialization library that can convert Java Objects into JSON and back.</td>
+</tr>
+<tr>
+<td>Picasso <br><a href="http://mvnrepository.com/artifact/com.squareup.picasso/picasso/2.5.2">picasso-2.5.2.jar</a></td>
+<td><a href="http://www.apache.org/licenses/LICENSE-2.0">Apache License, Version 2.0</a></td>
+<td><a href="http://square.github.io/picasso/">Picasso project pages on GitHub</a></td>
+<td>A powerful image downloading and caching library for Android.</td>
+</tr>
+</tbody></table></div><h3 id="gradle">Gradle</h3>
+<p>Gradle is used to build the SDK and its dependencies. Each sample includes a <code>build.gradle</code> file which compiles different Quixey libraries (<code>.arr</code>).</p>
+<p>Each sample adds the following dependencies to the Gradle build configuration script.</p>
+<pre><code class="hljs gradle"><span class="hljs-keyword">compile</span> <span class="hljs-string">'com.google.android.gms:play-services-location:9.0.0'</span>
+<span class="hljs-keyword">compile</span> <span class="hljs-string">'com.google.android.gms:play-services-ads:9.0.0'</span>
+<span class="hljs-keyword">compile</span> <span class="hljs-string">'com.google.android.gms:play-services-analytics:9.0.0'</span>
+<span class="hljs-keyword">compile</span> <span class="hljs-string">'com.google.code.gson:gson:2.6.2'</span>
+<span class="hljs-keyword">compile</span> <span class="hljs-string">'com.android.support:appcompat-v7:23.1.1'</span>
+<span class="hljs-keyword">compile</span> <span class="hljs-string">'com.android.support:recyclerview-v7:23.1.1'</span>
+<span class="hljs-keyword">compile</span> <span class="hljs-string">'com.android.support:cardview-v7:23.1.1'</span>
+<span class="hljs-keyword">compile</span> <span class="hljs-string">'com.android.support:palette-v7:23.1.1'</span>
+<span class="hljs-keyword">compile</span> <span class="hljs-string">'com.squareup.picasso:picasso:2.5.2'</span>
+<span class="hljs-keyword">compile</span> <span class="hljs-string">'com.android.support:design:23.1.1'</span>
+<span class="hljs-keyword">compile</span> <span class="hljs-string">'com.android.support:multidex:1.0.1'</span>
+<span class="hljs-keyword">compile</span> <span class="hljs-string">'com.android.support:support-v13:23.1.1'</span></code></pre><ul>
+<li>For <strong>Quixey Basic</strong>, see <a href="QxySample/sample-search/build.gradle"><code>QxySample/sample-search/build.gradle</code></a>.</li>
+<li>For <strong>Quixey Lite</strong>, see <a href="QxySample/sample-home/build.gradle"><code>QxySample/sample-home/build.gradle</code></a>.</li>
+<li>For <strong>Quixey Full</strong>, see <a href="QxySample/sample-screens/build.gradle"><code>QxySample/sample-screens/build.gradle</code></a>.</li>
+</ul>
+<h2 id="integration-steps">Integration Steps</h2>
+<p>This section shows you how to integrate the Quixey Mobile SDK for Android into your project. <br>Follow these steps:</p>
+<ol>
+<li><a href="#headDownload">Download the right Quixey libraries</a></li>
+<li><a href="#headExternalDependencies">Add Quixey’s external dependencies</a></li>
+<li><a href="#headPartnerConfiguration">Add Quixey’s partner configuration</a></li>
+<li><a href="#headApplicationClass">Update your application class</a></li>
+<li><a href="#headLayouts">Create your layouts</a></li>
+<li><a href="#headDisplay">Display your layouts</a></li>
+<li><a href="#headDeepLinks">Handle Quixey deep links</a></li>
+<li><a href="#headGoogleMaps">Handle Google MAPS Android API integration</a></li>
+<li><a href="#headObfuscation">Handle ProGuard obfuscation</a></li>
+</ol>
+<h3 id="-a-name-headdownload-a-step-1-download-the-right-quixey-libraries"><a name="headDownload"></a>STEP 1: Download the right Quixey libraries</h3>
+<p>Download the set of Quixey Android archive library <code>.aar</code> files that you need and add them to your project's <code>lib</code> folder. Also add these libraries to the Gradle dependency configurations file <code>build.gradle</code>. All three libraries are available for download from the Quixey Full sample <code>libs</code> directory:  <a href="QxySample/sample-screens/libs"><code>QxySample/sample-screens/libs</code></a>.</p>
+<h4 id="quixey-basic-library">Quixey Basic Library</h4>
+<ul>
+<li>Implement basic search functionality.</li>
+<li>Use only <code>sdk-standard-release.aar</code>.</li>
+</ul>
+<p><a href="QxySample/sample-search/build.gradle"><code>QxySample/sample-search/build.gradle</code></a>:</p>
+<pre><code class="hljs gradle"><span class="hljs-keyword">compile</span>(name: <span class="hljs-string">"sdk-standard-release"</span>, ext: <span class="hljs-string">"aar"</span>)</code></pre><h4 id="quixey-lite-libraries">Quixey Lite Libraries</h4>
+<ul>
+<li>Implement search and discovery functionality without personalization.</li>
+<li>Use both <code>screens-lite-release.aar</code> and <code>sdk-standard-release.aar</code>.</li>
+</ul>
+<p><a href="QxySample/sample-home/build.gradle"><code>QxySample/sample-home/build.gradle</code></a>:</p>
+<pre><code class="hljs gradle"><span class="hljs-keyword">compile</span>(name: <span class="hljs-string">"sdk-standard-release"</span>, ext: <span class="hljs-string">"aar"</span>)
+<span class="hljs-keyword">compile</span>(name: <span class="hljs-string">"screens-lite-release"</span>, ext: <span class="hljs-string">"aar"</span>)</code></pre><h4 id="quixey-full-libraries">Quixey Full Libraries</h4>
+<ul>
+<li>Implement search, discovery, and personalization.</li>
+<li>Use all three: <code>discovery-release.aar</code>, <code>screens-lite-release.aar</code>, and <code>sdk-standard-release.aar</code>.</li>
+</ul>
+<p><a href="QxySample/sample-screens/build.gradle"><code>QxySample/sample-screens/build.gradle</code></a>:</p>
+<pre><code class="hljs gradle"><span class="hljs-keyword">compile</span>(name: <span class="hljs-string">"sdk-standard-release"</span>, ext: <span class="hljs-string">"aar"</span>)
+<span class="hljs-keyword">compile</span>(name: <span class="hljs-string">"screens-lite-release"</span>, ext: <span class="hljs-string">"aar"</span>)
+<span class="hljs-keyword">compile</span>(name: <span class="hljs-string">"discovery-release"</span>, ext: <span class="hljs-string">"aar"</span>)</code></pre><h3 id="-a-name-headexternaldependencies-a-step-2-add-quixey-s-external-dependencies"><a name="headExternalDependencies"></a>STEP 2: Add Quixey’s external dependencies</h3>
+<p>In addition to the Quixey <code>.aar</code> library files specified above, add the following third-party libraries as external dependencies to <code>build.gradle</code>.</p>
+<h4 id="sample-build-file">Sample Build File</h4>
+<p><a href="QxySample/sample-screens/build.gradle"><code>QxySample/sample-screens/build.gradle</code></a>:</p>
+<pre><code class="hljs gradle"><span class="hljs-keyword">repositories</span> {
+    <span class="hljs-keyword">flatDir</span> {
+        dirs <span class="hljs-string">'libs'</span>
+    }
+}
+<span class="hljs-keyword">dependencies</span> {
+    <span class="hljs-keyword">compile</span> <span class="hljs-keyword">fileTree</span>(dir: <span class="hljs-string">'libs'</span>, <span class="hljs-keyword">include</span>: [<span class="hljs-string">'*.jar'</span>])
+    <span class="hljs-keyword">compile</span> <span class="hljs-string">'com.google.android.gms:play-services-location:9.0.0'</span>
+    <span class="hljs-keyword">compile</span> <span class="hljs-string">'com.google.android.gms:play-services-ads:9.0.0'</span>
+    <span class="hljs-keyword">compile</span> <span class="hljs-string">'com.google.android.gms:play-services-analytics:9.0.0'</span>
+    <span class="hljs-keyword">compile</span> <span class="hljs-string">'com.google.code.gson:gson:2.6.2'</span>
+    <span class="hljs-keyword">compile</span> <span class="hljs-string">'com.android.support:appcompat-v7:23.1.1'</span>
+    <span class="hljs-keyword">compile</span> <span class="hljs-string">'com.android.support:recyclerview-v7:23.1.1'</span>
+    <span class="hljs-keyword">compile</span> <span class="hljs-string">'com.android.support:cardview-v7:23.1.1'</span>
+    <span class="hljs-keyword">compile</span> <span class="hljs-string">'com.android.support:palette-v7:23.1.1'</span>
+    <span class="hljs-keyword">compile</span> <span class="hljs-string">'com.squareup.picasso:picasso:2.5.2'</span>
+    <span class="hljs-keyword">compile</span> <span class="hljs-string">'com.android.support:design:23.1.1'</span>
+    <span class="hljs-keyword">compile</span> <span class="hljs-string">'com.android.support:multidex:1.0.1'</span>
+    <span class="hljs-keyword">compile</span> <span class="hljs-string">'com.android.support:support-v13:23.1.1'</span>
+    <span class="hljs-keyword">compile</span>(name: <span class="hljs-string">"sdk-standard-release"</span>, ext: <span class="hljs-string">"aar"</span>)
+    <span class="hljs-keyword">compile</span>(name: <span class="hljs-string">"screens-lite-release"</span>, ext: <span class="hljs-string">"aar"</span>)
+    <span class="hljs-keyword">compile</span>(name: <span class="hljs-string">"discovery-release"</span>, ext: <span class="hljs-string">"aar"</span>)
+}</code></pre><h3 id="-a-name-headpartnerconfiguration-a-step-3-add-quixey-s-partner-configuration"><a name="headPartnerConfiguration"></a>STEP 3: Add Quixey’s partner configuration</h3>
+<p>Before starting integration, make sure you have been issued product keys from Quixey.<br>Create a file named <code>quixey_config.json</code> in the <code>assets</code> folder. It should be at the same level as the <code>java</code> and <code>res</code> folders.</p>
+<p>This configuration file (<code>assets/quixey_config.json</code>) must contain the following partner product keys and custom settings.</p>
+<h4 id="product-keys">Product Keys</h4>
+<p>The <code>product_keys</code> object includes these string members:</p>
+<ul>
+<li><code>partner_id</code> — unique partner API key for authentication provided by Quixey.</li>
+<li><code>partner_secret</code> — partner secret key for authentication provided by Quixey.</li>
+<li><code>partner_engagement</code> — string to support internal development and testing. <ul>
+<li>The value should be <code>"internaldev"</code> to indicate the integration is in a staging environment. </li>
+<li>When you are ready, this value should be changed to <code>"release"</code> to indicate the integration is in a production environment.</li>
+</ul>
+</li>
+</ul>
+<h4 id="custom-settings">Custom Settings</h4>
+<p>The <code>custom_settings</code> object includes these Boolean and string members:</p>
+<ul>
+<li><code>feature_screens</code> — Boolean to enable/disable the Quixey Lite or Quixey Full features, including collections of Deep View Cards, and the ability to share these collections.</li>
+<li><code>feature_save_deepview</code> — Boolean to enable/disable user personalization by saving Deep View Cards for future use, only available in the Quixey Full feature set.</li>
+<li><code>feature_autosuggest</code> — Boolean to enable/disable auto-generated search term suggestions in the search bar.</li>
+<li><code>feature_device_search</code> — Boolean to enable/disable users to search their devices, including contacts, texts, and calendar entries. </li>
+<li><code>preloaded_dv_url</code> — optional base URL string of a deep view binding, preloaded to optimize performance. Specifies the location where remote artifacts are preloaded. Increases the build size, but reduces the download size. </li>
+</ul>
+<h4 id="sample-partner-configuration-file">Sample Partner Configuration File</h4>
+<p><a href="QxySample/sample-screens/src/main/assets/quixey_config.json"><code>QxySample/sample-screens/src/main/assets/quixey_config.json</code></a>:</p>
+<pre><code class="hljs javascript">{
+  <span class="hljs-string">"product_keys"</span> : {
+    <span class="hljs-string">"partner_id"</span>: <span class="hljs-string">"&lt;partner-id&gt;"</span>,
+    <span class="hljs-string">"partner_secret"</span>: <span class="hljs-string">"&lt;partner-secret&gt;"</span>,
+    <span class="hljs-string">"partner_engagement"</span>: <span class="hljs-string">"&lt;partner-engagement&gt;"</span>
+  },
+  <span class="hljs-string">"custom_settings"</span>: {
+    <span class="hljs-string">"feature_screens"</span>: <span class="hljs-literal">true</span>,
+    <span class="hljs-string">"feature_save_deepview"</span>: <span class="hljs-literal">true</span>,
+    <span class="hljs-string">"feature_autosuggest"</span> : <span class="hljs-literal">true</span>,
+    <span class="hljs-string">"feature_device_search"</span> : <span class="hljs-literal">true</span>,
+    <span class="hljs-string">"preloaded_dv_url"</span>: <span class="hljs-string">"file:///android_asset/deep_view/"</span>
+  }
+}</code></pre><h3 id="-a-name-headapplicationclass-a-step-4-update-your-application-class"><a name="headApplicationClass"></a>STEP 4: Update your application class</h3>
+<p>Update your application class based on the feature set as follows:</p>
+<ul>
+<li>For the Quixey Basic functionality you need to call the SDK initialization function <code>QuixeySdk.initialize()</code>. </li>
+<li>For the Quixey Lite feature set you need to extend your application class from the specified Quixey <code>ScreensApplication</code> class, which calls the initialization function.</li>
+<li>For the Quixey Full feature set you need to extend your application class from the specified Quixey <code>HomeApplication</code> class, which calls the initialization function.</li>
+</ul>
+<p>See the sample code below.</p>
+<h4 id="quixey-basic-application-class">Quixey Basic Application Class</h4>
+<p>For Quixey Basic integration, initialize the SDK in your application class by calling the Quixey API <code>QuixeySdk.initialize()</code> and implementing a callback class, for example <code>QuixeySdkCallback</code>, that returns Quixey configuration values and handles Quixey events.</p>
+<h5 id="sample-basic-application-code">Sample Basic Application Code</h5>
+<p><a href="QxySample/sample-search/src/main/java/com/quixey/sample/search/SampleApplication.java"><code>QxySample/sample-search/src/main/java/com/quixey/sample/search/SampleApplication.java</code></a>:</p>
+<pre><code class="hljs java"><span class="hljs-keyword">package</span> com.quixey.sample.search;
+<span class="hljs-keyword">import</span> android.app.Application;
+<span class="hljs-keyword">import</span> com.quixey.android.QuixeySdk;
+<span class="hljs-keyword">import</span> java.util.Map;
+<span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">SampleApplication</span> <span class="hljs-keyword">extends</span> <span class="hljs-title">Application</span> </span>{
+    <span class="hljs-keyword">private</span> <span class="hljs-keyword">boolean</span> quixeyInitialized = <span class="hljs-keyword">false</span>;
+    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">boolean</span> <span class="hljs-title">isQuixeyInitialized</span><span class="hljs-params">()</span> </span>{
+        <span class="hljs-keyword">return</span> quixeyInitialized;
+    }
+    <span class="hljs-meta">@Override</span>
+    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">onCreate</span><span class="hljs-params">()</span> </span>{
+        <span class="hljs-keyword">super</span>.onCreate();
+        <span class="hljs-comment">// initialize Quixey SDK</span>
+        QuixeySdk.initialize(<span class="hljs-keyword">this</span>, <span class="hljs-keyword">new</span> QuixeySdkCallback());
+    }
+    <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">QuixeySdkCallback</span> <span class="hljs-keyword">implements</span> <span class="hljs-title">QuixeySdk</span>.<span class="hljs-title">Callback</span> </span>{
+        <span class="hljs-meta">@Override</span>
+        <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">onNotSupportedSdkVersionCode</span><span class="hljs-params">(<span class="hljs-keyword">int</span> sdkVersionCode)</span> </span>{
+            <span class="hljs-comment">// <span class="hljs-doctag">TODO:</span> handle this event</span>
+        }
+        <span class="hljs-meta">@Override</span>
+        <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">onRecommendedUpdateSdkVersionCode</span><span class="hljs-params">(<span class="hljs-keyword">int</span> sdkVersionCode)</span> </span>{
+            <span class="hljs-comment">// <span class="hljs-doctag">TODO:</span> handle this event</span>
+        }
+        <span class="hljs-meta">@Override</span>
+        <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">onBadSystemPartnerKey</span><span class="hljs-params">()</span> </span>{
+            <span class="hljs-comment">// <span class="hljs-doctag">TODO:</span> handle this event</span>
+        }
+        <span class="hljs-meta">@Override</span>
+        <span class="hljs-function"><span class="hljs-keyword">public</span> String <span class="hljs-title">getConfigJsonPath</span><span class="hljs-params">()</span> </span>{
+            <span class="hljs-keyword">return</span> <span class="hljs-string">"quixey_config.json"</span>;
+        }
+        <span class="hljs-meta">@Override</span>
+        <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">onInitComplete</span><span class="hljs-params">()</span> </span>{
+            <span class="hljs-comment">//Quixey is initialized</span>
+            <span class="hljs-comment">//Use this to show progress bar or hide/unhide Quixey View</span>
+            quixeyInitialized = <span class="hljs-keyword">true</span>;
+        }
+        <span class="hljs-meta">@Override</span>
+        <span class="hljs-function"><span class="hljs-keyword">public</span> Map&lt;String, String&gt; <span class="hljs-title">getAltPartnerCredentials</span><span class="hljs-params">()</span> </span>{
+            <span class="hljs-keyword">return</span> <span class="hljs-keyword">null</span>;    <span class="hljs-comment">//Partner Config is already part of quixey_config.json</span>
+        }
+    }
+}</code></pre><h4 id="quixey-lite-application-class">Quixey Lite Application Class</h4>
+<p>For Quixey Lite integration, extend your application class from the <code>ScreensApplication</code> class. The <code>ScreensApplication</code> class has all the capabilities of the <code>Application</code> class.</p>
+<h5 id="sample-lite-application-code">Sample Lite Application Code</h5>
+<p><a href="QxySample/sample-home/src/main/java/com/quixey/sample/home/SampleApplication.java"><code>QxySample/sample-home/src/main/java/com/quixey/sample/home/SampleApplication.java</code></a>:</p>
+<pre><code class="hljs java"><span class="hljs-keyword">package</span> com.quixey.sample.home;
+<span class="hljs-keyword">import</span> com.quixey.screens.library.ScreensApplication;
+<span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">SampleApplication</span> <span class="hljs-keyword">extends</span> <span class="hljs-title">ScreensApplication</span> </span>{
+    <span class="hljs-meta">@Override</span>
+    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">onCreate</span><span class="hljs-params">()</span> </span>{
+        <span class="hljs-keyword">super</span>.onCreate();
+        <span class="hljs-comment">//Application specific implementation</span>
+    }
+    <span class="hljs-meta">@Override</span>
+    <span class="hljs-function"><span class="hljs-keyword">protected</span> String <span class="hljs-title">getPartnerConfig</span><span class="hljs-params">()</span> </span>{
+        <span class="hljs-keyword">return</span> <span class="hljs-string">"quixey_config.json"</span>;
+    }
+}</code></pre><h4 id="quixey-full-application-class">Quixey Full Application Class</h4>
+<p>For Quixey Full integration, extend your application class from the <code>HomeApplication</code> class. The <code>HomeApplication</code> class has all the capabilities of the <code>Application</code> class.</p>
+<h5 id="sample-full-application-code">Sample Full Application Code</h5>
+<p><a href="QxySample/sample-screens/src/main/java/com/quixey/sample/screens/SampleApplication.java"><code>QxySample/sample-screens/src/main/java/com/quixey/sample/screens/SampleApplication.java</code></a>:</p>
+<pre><code class="hljs java"><span class="hljs-keyword">package</span> com.quixey.sample.screens;
+<span class="hljs-keyword">import</span> com.quixey.screens.library.HomeApplication;
+<span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">SampleApplication</span> <span class="hljs-keyword">extends</span> <span class="hljs-title">HomeApplication</span> </span>{
+    <span class="hljs-meta">@Override</span>
+    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">onCreate</span><span class="hljs-params">()</span> </span>{
+        <span class="hljs-keyword">super</span>.onCreate();
+        <span class="hljs-comment">//Application specific implementation</span>
+    }
+    <span class="hljs-meta">@Override</span>
+    <span class="hljs-function"><span class="hljs-keyword">protected</span> String <span class="hljs-title">getPartnerConfig</span><span class="hljs-params">()</span> </span>{
+        <span class="hljs-keyword">return</span> <span class="hljs-string">"quixey_config.json"</span>;
+    }
+}</code></pre><h3 id="-a-name-headlayouts-a-step-5-create-your-layouts"><a name="headLayouts"></a>STEP 5: Create your layouts</h3>
+<p>Create a layout that holds the search widget, the lite widget, or the full view widget based on your selected feature set.</p>
+<h4 id="quixey-basic-layout">Quixey Basic Layout</h4>
+<p>To display Quixey Basic functionality, create a layout named <code>acitivy_main.xml</code> that holds the search widget.<br>The search widget is called <code>DeepViewSerp</code>. The attribute <code>serpSolu</code>, used for partner analytics, specifies a unique string to represent the widget placement in the user interface, to distinguish it from other instances of the widget in the app.</p>
+<p><a href="QxySample/sample-search/src/main/res/layout/activity_main.xml"><code>QxySample/sample-search/src/main/res/layout/activity_main.xml</code></a>:</p>
+<pre><code class="hljs xml"><span class="hljs-tag">&lt;<span class="hljs-name">RelativeLayout</span>
+    <span class="hljs-attr">xmlns:android</span>=<span class="hljs-string">"http://schemas.android.com/apk/res/android"</span>
+    <span class="hljs-attr">xmlns:app</span>=<span class="hljs-string">"http://schemas.android.com/apk/res-auto"</span>
+    <span class="hljs-attr">android:layout_width</span>=<span class="hljs-string">"match_parent"</span>
+    <span class="hljs-attr">android:layout_height</span>=<span class="hljs-string">"match_parent"</span>
+    &gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">com.quixey.android.ui.custom.widget.DeepViewSerp</span>
+        <span class="hljs-attr">android:id</span>=<span class="hljs-string">"@+id/search_serp"</span>
+        <span class="hljs-attr">android:layout_width</span>=<span class="hljs-string">"match_parent"</span>
+        <span class="hljs-attr">android:layout_height</span>=<span class="hljs-string">"match_parent"</span>
+        <span class="hljs-attr">app:includeSearchBar</span>=<span class="hljs-string">"true"</span>
+        <span class="hljs-attr">app:serpSoln</span>=<span class="hljs-string">"@string/solution_tag"</span>
+        <span class="hljs-attr">android:visibility</span>=<span class="hljs-string">"gone"</span>/&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">RelativeLayout</span>&gt;</span></code></pre><h4 id="quixey-lite-layout">Quixey Lite Layout</h4>
+<p>To display Quixey Lite functionality, create a layout named <code>activity_main.xml</code> that holds the lite view widget. The attributes <code>seachBar</code> and <code>nowCards</code> can be used to enable and disable the search bar and Now cards respectively. The attribute <code>titleImage</code> is used to set a drawable title. All three (3) attributes <code>searchBar</code>, <code>nowCards</code> and <code>titleImage</code> are only available in the lite view.</p>
+<p><a href="QxySample/sample-home/src/main/res/layout/activity_main.xml"><code>QxySample/sample-home/src/main/res/layout/activity_main.xml</code></a>:</p>
+<pre><code class="hljs xml"><span class="hljs-tag">&lt;<span class="hljs-name">RelativeLayout</span>
+    <span class="hljs-attr">xmlns:android</span>=<span class="hljs-string">"http://schemas.android.com/apk/res/android"</span>
+    <span class="hljs-attr">xmlns:app</span>=<span class="hljs-string">"http://schemas.android.com/apk/res-auto"</span>
+    <span class="hljs-attr">android:layout_width</span>=<span class="hljs-string">"match_parent"</span>
+    <span class="hljs-attr">android:layout_height</span>=<span class="hljs-string">"match_parent"</span>
+    &gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">com.quixey.screens.library.ui.custom.widget.QuixeyScreenLite</span>
+        <span class="hljs-attr">android:id</span>=<span class="hljs-string">"@+id/quixey_screen"</span>
+        <span class="hljs-attr">android:layout_width</span>=<span class="hljs-string">"match_parent"</span>
+        <span class="hljs-attr">android:layout_height</span>=<span class="hljs-string">"match_parent"</span>
+        <span class="hljs-attr">android:background</span>=<span class="hljs-string">"@color/screen_app_background"</span>
+        <span class="hljs-attr">app:searchBar</span>=<span class="hljs-string">"true"</span>
+        <span class="hljs-attr">app:nowCards</span>=<span class="hljs-string">"true"</span>
+        <span class="hljs-attr">app:titleImage</span>=<span class="hljs-string">"@drawable/ic_splash_logo_bigger"</span>
+        <span class="hljs-attr">android:visibility</span>=<span class="hljs-string">"gone"</span>
+        /&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">RelativeLayout</span>&gt;</span></code></pre><h4 id="quixey-full-layout">Quixey Full Layout</h4>
+<p>To display Quixey Full functionality, create a layout named <code>activity_main.xml</code> that holds the full view widget.</p>
+<p><a href="QxySample/sample-screens/src/main/res/layout/activity_main.xml"><code>QxySample/sample-screens/src/main/res/layout/activity_main.xml</code></a>:</p>
+<pre><code class="hljs xml"><span class="hljs-tag">&lt;<span class="hljs-name">RelativeLayout</span>
+    <span class="hljs-attr">xmlns:android</span>=<span class="hljs-string">"http://schemas.android.com/apk/res/android"</span>
+    <span class="hljs-attr">xmlns:app</span>=<span class="hljs-string">"http://schemas.android.com/apk/res-auto"</span>
+    <span class="hljs-attr">android:layout_width</span>=<span class="hljs-string">"match_parent"</span>
+    <span class="hljs-attr">android:layout_height</span>=<span class="hljs-string">"match_parent"</span>
+    &gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">com.quixey.screens.library.ui.custom.widget.QuixeyScreen</span>
+        <span class="hljs-attr">android:id</span>=<span class="hljs-string">"@+id/quixey_screen"</span>
+        <span class="hljs-attr">android:layout_width</span>=<span class="hljs-string">"match_parent"</span>
+        <span class="hljs-attr">android:layout_height</span>=<span class="hljs-string">"match_parent"</span>
+        <span class="hljs-attr">android:background</span>=<span class="hljs-string">"@color/screen_app_background"</span>
+        <span class="hljs-attr">android:visibility</span>=<span class="hljs-string">"gone"</span>
+        /&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">RelativeLayout</span>&gt;</span></code></pre><h3 id="-a-name-headdisplay-a-step-6-display-your-layouts"><a name="headDisplay"></a>STEP 6: Display your layouts</h3>
+<p>Use an <code>Activity</code> or a <code>Fragment</code> to display the layout you created above.</p>
+<h4 id="quixey-basic-display">Quixey Basic Display</h4>
+<p>For the Quixey Basic layout just call <code>setContentView()</code> with the name of the layout you created.</p>
+<p><a href="QxySample/sample-search/src/main/java/com/quixey/sample/search/MainActivity.java"><code>QxySample/sample-search/src/main/java/com/quixey/sample/search/MainActivity.java</code></a>:</p>
+<pre><code class="hljs java"><span class="hljs-meta">@Override</span>
+<span class="hljs-function"><span class="hljs-keyword">protected</span> <span class="hljs-keyword">void</span> <span class="hljs-title">onCreate</span><span class="hljs-params">(Bundle savedInstanceState)</span> </span>{
+    <span class="hljs-keyword">super</span>.onCreate(savedInstanceState);
+    getWindow().requestFeature(Window.FEATURE_NO_TITLE);
+    setContentView(R.layout.activity_main);
+    <span class="hljs-keyword">new</span> Loading().execute();
+}</code></pre><h4 id="quixey-lite-amp-quixey-full-displays">Quixey Lite &amp; Quixey Full Displays</h4>
+<p>For Quixey Lite and Quixey Full displays, use an <code>Activity</code> or <code>Fragment</code> to display the layout and to pass events to the Quixey view. Quixey Lite requires that user interest categories of Deep View Cards be pre-loaded (see the <code>ArrayList interest</code> in the sample code below). The Quixey Full feature set provides an additional user interface flow that allows end-users to select and save their interests (and the <code>ArrayList interest</code> can be removed). </p>
+<p>Examples of common user interest categories include:</p>
+<ul>
+<li>news</li>
+<li>local</li>
+<li>politics</li>
+<li>tech news</li>
+<li>movie trailers</li>
+</ul>
+<h5 id="sample-lite-main-activity-code">Sample Lite Main Activity Code</h5>
+<p><a href="QxySample/sample-home/src/main/java/com/quixey/sample/home/MainActivity.java"><code>QxySample/sample-home/src/main/java/com/quixey/sample/home/MainActivity.java</code></a>:</p>
+<pre><code class="hljs java"><span class="hljs-keyword">package</span> com.quixey.sample.home;
+<span class="hljs-keyword">import</span> android.app.Activity;
+<span class="hljs-keyword">import</span> android.app.AlertDialog;
+<span class="hljs-keyword">import</span> android.content.DialogInterface;
+<span class="hljs-keyword">import</span> android.content.Intent;
+<span class="hljs-keyword">import</span> android.os.AsyncTask;
+<span class="hljs-keyword">import</span> android.os.Bundle;
+<span class="hljs-keyword">import</span> android.view.View;
+<span class="hljs-keyword">import</span> android.view.Window;
+<span class="hljs-keyword">import</span> com.quixey.screens.library.assist.IQuixeyView;
+<span class="hljs-keyword">import</span> java.util.ArrayList;
+<span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">MainActivity</span> <span class="hljs-keyword">extends</span> <span class="hljs-title">Activity</span> </span>{
+    <span class="hljs-keyword">private</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">final</span> String LOG_TAG = MainActivity.class.getSimpleName();
+    <span class="hljs-keyword">private</span> IQuixeyView mQuixeyScreen;
+    <span class="hljs-meta">@Override</span>
+    <span class="hljs-function"><span class="hljs-keyword">protected</span> <span class="hljs-keyword">void</span> <span class="hljs-title">onCreate</span><span class="hljs-params">(Bundle savedInstanceState)</span> </span>{
+        <span class="hljs-keyword">super</span>.onCreate(savedInstanceState);
+        getWindow().requestFeature(Window.FEATURE_NO_TITLE);
+        setContentView(R.layout.activity_main);
+        mQuixeyScreen = (IQuixeyView) findViewById(R.id.quixey_screen);
+        mQuixeyScreen.onCreate(savedInstanceState);
+        ArrayList&lt;String&gt; interest = <span class="hljs-keyword">new</span> ArrayList&lt;String&gt;();
+        interest.add(<span class="hljs-string">"NEWS"</span>);
+        interest.add(<span class="hljs-string">"LOCAL"</span>);
+        interest.add(<span class="hljs-string">"MOVIE TRAILERS"</span>);
+        interest.add(<span class="hljs-string">"POLITICS"</span>);
+        interest.add(<span class="hljs-string">"TECH NEWS"</span>);
+        mQuixeyScreen.setInterest(interest);
+        <span class="hljs-keyword">new</span> Loading().execute();
+    }
+    <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Loading</span> <span class="hljs-keyword">extends</span> <span class="hljs-title">AsyncTask</span>&lt;<span class="hljs-title">Void</span>, <span class="hljs-title">Void</span>, <span class="hljs-title">Boolean</span>&gt; </span>{
+        <span class="hljs-keyword">long</span> startTime = System.currentTimeMillis();
+        <span class="hljs-keyword">long</span> TIMEOUT = <span class="hljs-number">30</span> * <span class="hljs-number">1000</span>;
+        <span class="hljs-meta">@Override</span>
+        <span class="hljs-function"><span class="hljs-keyword">protected</span> Boolean <span class="hljs-title">doInBackground</span><span class="hljs-params">(Void... params)</span> </span>{
+            <span class="hljs-keyword">while</span> (System.currentTimeMillis() - startTime &lt; TIMEOUT) {
+                <span class="hljs-keyword">if</span> (((SampleApplication)getApplication()).isSdkInitialized()) {
+                    <span class="hljs-keyword">return</span> Boolean.TRUE;
+                }
+                <span class="hljs-keyword">try</span> {
+                    Thread.sleep(<span class="hljs-number">1000</span>);
+                } <span class="hljs-keyword">catch</span>(Exception e) {}
+            }
+            <span class="hljs-keyword">return</span> Boolean.FALSE;
+        }
+        <span class="hljs-meta">@Override</span>
+        <span class="hljs-function"><span class="hljs-keyword">protected</span> <span class="hljs-keyword">void</span> <span class="hljs-title">onPostExecute</span><span class="hljs-params">(Boolean result)</span> </span>{
+            <span class="hljs-keyword">if</span> (result) {
+                findViewById(R.id.progress).setVisibility(View.GONE);
+                mQuixeyScreen.setVisibility(View.VISIBLE);
+            } <span class="hljs-keyword">else</span> {
+                findViewById(R.id.progress).setVisibility(View.GONE);
+                AlertDialog alertDialog = <span class="hljs-keyword">new</span> AlertDialog.Builder(MainActivity.<span class="hljs-keyword">this</span>).create();
+                alertDialog.setTitle(getString(R.string.error_title));
+                alertDialog.setMessage(getString(R.string.error_body));
+                alertDialog.setButton(AlertDialog.BUTTON_NEUTRAL, getString(R.string.error_exit),
+                        <span class="hljs-keyword">new</span> DialogInterface.OnClickListener() {
+                            <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">onClick</span><span class="hljs-params">(DialogInterface dialog, <span class="hljs-keyword">int</span> which)</span> </span>{
+                                dialog.dismiss();
+                                finish();
+                            }
+                        });
+                alertDialog.show();
+            }
+        }
+    }
+    <span class="hljs-meta">@Override</span>
+    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">onBackPressed</span><span class="hljs-params">()</span> </span>{
+        <span class="hljs-keyword">if</span> (mQuixeyScreen != <span class="hljs-keyword">null</span> &amp;&amp; !mQuixeyScreen.onBackPressed()) {
+            <span class="hljs-keyword">super</span>.onBackPressed();
+            <span class="hljs-comment">//Handle Application Specific implementation</span>
+        }
+    }
+    <span class="hljs-meta">@Override</span>
+    <span class="hljs-function"><span class="hljs-keyword">protected</span> <span class="hljs-keyword">void</span> <span class="hljs-title">onNewIntent</span><span class="hljs-params">(Intent intent)</span> </span>{
+        <span class="hljs-keyword">super</span>.onNewIntent(intent);
+        <span class="hljs-keyword">if</span> (mQuixeyScreen != <span class="hljs-keyword">null</span>) {
+            mQuixeyScreen.onNewIntent(intent);
+        }
+        <span class="hljs-comment">//Handle Application Specific implementation</span>
+    }
+    <span class="hljs-meta">@Override</span>
+    <span class="hljs-function"><span class="hljs-keyword">protected</span> <span class="hljs-keyword">void</span> <span class="hljs-title">onPause</span><span class="hljs-params">()</span> </span>{
+        <span class="hljs-keyword">if</span> (mQuixeyScreen != <span class="hljs-keyword">null</span>) {
+            mQuixeyScreen.onPause();
+        }
+        <span class="hljs-comment">//Handle Application Specific implementation</span>
+        <span class="hljs-keyword">super</span>.onPause();
+    }
+    <span class="hljs-meta">@Override</span>
+    <span class="hljs-function"><span class="hljs-keyword">protected</span> <span class="hljs-keyword">void</span> <span class="hljs-title">onResume</span><span class="hljs-params">()</span> </span>{
+        <span class="hljs-keyword">super</span>.onResume();
+        <span class="hljs-keyword">if</span> (mQuixeyScreen != <span class="hljs-keyword">null</span>) {
+            mQuixeyScreen.onResume();
+        }
+        <span class="hljs-comment">//Handle Application Specific implementation</span>
+    }
+    <span class="hljs-meta">@Override</span>
+    <span class="hljs-function"><span class="hljs-keyword">protected</span> <span class="hljs-keyword">void</span> <span class="hljs-title">onDestroy</span><span class="hljs-params">()</span> </span>{
+        <span class="hljs-keyword">if</span> (mQuixeyScreen != <span class="hljs-keyword">null</span>) {
+            mQuixeyScreen.onDestroy();
+        }
+        <span class="hljs-comment">//Handle Application Specific implementation</span>
+        <span class="hljs-keyword">super</span>.onDestroy();
+    }
+    <span class="hljs-meta">@Override</span>
+    <span class="hljs-function"><span class="hljs-keyword">protected</span> <span class="hljs-keyword">void</span> <span class="hljs-title">onStart</span><span class="hljs-params">()</span> </span>{
+        <span class="hljs-keyword">super</span>.onStart();
+        <span class="hljs-keyword">if</span> (mQuixeyScreen != <span class="hljs-keyword">null</span>) {
+            mQuixeyScreen.onStart();
+            mQuixeyScreen.onSpotLight(<span class="hljs-keyword">true</span>);
+        }
+        <span class="hljs-comment">//Handle Application Specific implementation</span>
+    }
+    <span class="hljs-meta">@Override</span>
+    <span class="hljs-function"><span class="hljs-keyword">protected</span> <span class="hljs-keyword">void</span> <span class="hljs-title">onStop</span><span class="hljs-params">()</span> </span>{
+        <span class="hljs-keyword">if</span> (mQuixeyScreen != <span class="hljs-keyword">null</span>) {
+            mQuixeyScreen.onStop();
+            mQuixeyScreen.onSpotLight(<span class="hljs-keyword">false</span>);
+        }
+        <span class="hljs-comment">//Handle Application Specific implementation</span>
+        <span class="hljs-keyword">super</span>.onStop();
+    }
+    <span class="hljs-meta">@Override</span>
+    <span class="hljs-function"><span class="hljs-keyword">protected</span> <span class="hljs-keyword">void</span> <span class="hljs-title">onActivityResult</span><span class="hljs-params">(<span class="hljs-keyword">int</span> requestCode, <span class="hljs-keyword">int</span> resultCode, Intent data)</span> </span>{
+        <span class="hljs-keyword">boolean</span> handled = <span class="hljs-keyword">false</span>;
+        <span class="hljs-keyword">if</span> (mQuixeyScreen != <span class="hljs-keyword">null</span>) {
+            handled = mQuixeyScreen.onActivityResult(requestCode, resultCode, data);
+        }
+        <span class="hljs-keyword">if</span> (!handled) {
+            <span class="hljs-keyword">super</span>.onActivityResult(requestCode, resultCode, data);
+            <span class="hljs-comment">//Handle Application Specific implementation</span>
+        }
+    }
+    <span class="hljs-meta">@Override</span>
+    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">onRequestPermissionsResult</span><span class="hljs-params">(<span class="hljs-keyword">int</span> requestCode, String[] permissions, <span class="hljs-keyword">int</span>[] grantResults)</span> </span>{
+        <span class="hljs-keyword">if</span> (mQuixeyScreen != <span class="hljs-keyword">null</span>) {
+            mQuixeyScreen.onRequestPermissionsResult(requestCode, permissions, grantResults);
+        }
+        <span class="hljs-comment">//Handle Application Specific implementation</span>
+    }
+}</code></pre><h3 id="-a-name-headdeeplinks-a-step-7-enable-quixey-deep-links"><a name="headDeepLinks"></a>STEP 7: Enable Quixey deep links</h3>
+<p>If your app uses Quixey Lite or Quixey Full, add the following <code>intent-filter</code> for the <code>activity</code> that has the Quixey Lite or Quixey Full view as part of the layout.</p>
+<h4 id="sample-manifest-file-xml">Sample Manifest File XML</h4>
+<p><a href="QxySample/sample-home/src/main/AndroidManifest.xml"><code>QxySample/sample-home/src/main/AndroidManifest.xml</code></a>:</p>
+<pre><code class="hljs xml"><span class="hljs-tag">&lt;<span class="hljs-name">intent-filter</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">action</span> <span class="hljs-attr">android:name</span>=<span class="hljs-string">"android.intent.action.VIEW"</span> /&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">category</span> <span class="hljs-attr">android:name</span>=<span class="hljs-string">"android.intent.category.DEFAULT"</span> /&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">category</span> <span class="hljs-attr">android:name</span>=<span class="hljs-string">"android.intent.category.BROWSABLE"</span> /&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">data</span> <span class="hljs-attr">android:scheme</span>=<span class="hljs-string">"screens"</span> /&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">intent-filter</span>&gt;</span></code></pre><h3 id="-a-name-headgooglemaps-a-step-8-enable-google-maps-android-api-integration"><a name="headGoogleMaps"></a>STEP 8: Enable Google MAPS Android API integration</h3>
+<p>If your app uses Quixey Now cards, the Quixey Now traffic feature uses the Google MAPS Android API. To use the Google Maps Android API, you must register your app project on the Google Developers Console and get a Google API key. This API key is based on a short form of your app’s digital certificate, known as its SHA-1 fingerprint. Quixey must add your app’s package name and SHA-1 fingerprint from the release certificate keystore file used to sign your application to the Google API Console for billing purposes, otherwise the traffic Now card will not work.</p>
+<p>For more details see <a href="https://developers.google.com/maps/documentation/android-api/signup">Google Maps Android API documentation</a></p>
+<h3 id="-a-name-headobfuscation-a-step-9-enable-proguard-obfuscation"><a name="headObfuscation"></a>STEP 9: Enable ProGuard obfuscation</h3>
+<p>The Quixey Android archive library <code>.aar</code> files are already obfuscated, if you are obfuscating your Android application, add the line below in your ProGuard Rules so that the Quixey <code>.aar</code> files are not obfuscated more than once.</p>
+<h4 id="sample-proguard-rules-option">Sample ProGuard Rules Option</h4>
+<p><a href="QxySample/sample-screens/proguard-rules.pro"><code>QxySample/sample-screens/proguard-rules.pro</code></a>:</p>
+<pre><code class="hljs undefined">-keep class com.quixey.** { *; }</code></pre><h2 id="quixey-discovery">Quixey Discovery</h2>
+<p>Bundled within <strong>Quixey Lite</strong> and <strong>Quixey Full</strong> are capabilities that allow you to view and manipulate collections of Deep View Cards.  These collections are referred to as Quixey Screens.  A 'Golden State Warriors' Screen, for example, might contain one or Deep View Cards relating to news and information about the namesake's basketball team.  A 'Tech Startup' Screen might contain Deep View Cards related to early-stage tech companies, their founders and venture funding.  Content for screens can be any combination of app or web results.</p>
+<p>Screens are grouped by Category and any Screen can belong to one or more Categories.  In the example above, the Golden State Warriors Screen can be categorized under both News AND Sports.  Categories are heirarchical and can be nested to any level (e.g. Sports -&gt; Basketball -&gt; NBA).</p>
+<p>Quixey supports two types of Screens:</p>
+<ul>
+<li><strong>Quixey-Screens</strong> — a pre-build set of custom Screens developed by Quixey for general use or as a service for partners</li>
+<li><strong>User-Screens</strong> — a set of Screens created by the end-user based on a selection of specific Deep View Cards from Search Results or from other Screens</li>
+</ul>
+<h3 id="screens-api">Screens API</h3>
+<p>Using Quixey Screens within your app is easy.  Quixey provides the following set of classes and methods for working with Screens and their associated Categories.</p>
+<h4 id="_screensclient_-class"><em>ScreensClient</em> Class</h4>
+<pre><code class="hljs java"><span class="hljs-comment">// The helper class to retrieve and render predefined Quixey screens.</span>
+<span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">ScreensClient</span> </span>{
+    <span class="hljs-comment">// Instantiate the class with a context like "Activity"</span>
+    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-title">ScreensClient</span><span class="hljs-params">(Context context)</span></span>;
+    <span class="hljs-comment">// Retrieve all the supported interests.</span>
+    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">getSupportedInterests</span><span class="hljs-params">(Callback&lt;List&lt;String&gt;, GatewayError&gt; callback)</span></span>;
+    <span class="hljs-comment">// Set (save) the user interests.</span>
+    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">setUserInterests</span><span class="hljs-params">(Set&lt;String&gt; interests)</span></span>;
+    <span class="hljs-comment">// Get the user interests.</span>
+    <span class="hljs-function"><span class="hljs-keyword">public</span> Set&lt;String&gt; <span class="hljs-title">getUserInterests</span><span class="hljs-params">()</span></span>;
+    <span class="hljs-comment">// Launch the Home screen that consists of deep view cards relevant to the user interests.</span>
+    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">launchHomeScreen</span><span class="hljs-params">()</span></span>;
+    <span class="hljs-comment">// Launch the Local screen.</span>
+    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">launchLocalScreen</span><span class="hljs-params">()</span></span>;
+    <span class="hljs-comment">// Launch the specified screen.</span>
+    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">launchScreen</span><span class="hljs-params">(String id)</span></span>;
+    <span class="hljs-comment">// Retrieve the specified category - a container of subcategories and screens.</span>
+    <span class="hljs-comment">// Specify an empty "categoryUrl" to retrieve the topmost (root) category.</span>
+    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">getScreensCategory</span><span class="hljs-params">(String categoryUrl, Callback&lt;ScreensResult, GatewayError&gt; callback)</span></span>;
+}</code></pre><h4 id="_screensresult_-class"><em>ScreensResult</em> Class</h4>
+<pre><code class="hljs java"><span class="hljs-comment">// Result of a screen category retrieval.</span>
+<span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">ScreensResult</span> </span>{
+    <span class="hljs-comment">// Get the subcategories.</span>
+    <span class="hljs-function"><span class="hljs-keyword">public</span> List&lt;CategoryEntry&gt; <span class="hljs-title">getChildren</span><span class="hljs-params">()</span></span>;
+    <span class="hljs-comment">// Get all the screen entries contained in the subcategories.</span>
+    <span class="hljs-function"><span class="hljs-keyword">public</span> List&lt;ScreensEntry&gt; <span class="hljs-title">getScreens</span><span class="hljs-params">()</span></span>;
+    <span class="hljs-comment">// Get the url of the targeted category.</span>
+    <span class="hljs-function"><span class="hljs-keyword">public</span> String <span class="hljs-title">getCategoryUrl</span><span class="hljs-params">()</span></span>;
+}</code></pre><h4 id="_categoryentry_-class"><em>CategoryEntry</em> Class</h4>
+<pre><code class="hljs java"><span class="hljs-comment">// A category entry.</span>
+<span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">CategoryEntry</span> </span>{
+    <span class="hljs-comment">// Get the category url.</span>
+    <span class="hljs-function"><span class="hljs-keyword">public</span> String <span class="hljs-title">getCategoryUrl</span><span class="hljs-params">()</span></span>;
+    <span class="hljs-comment">// Get all the screens contained in the category.</span>
+    <span class="hljs-function"><span class="hljs-keyword">public</span> List&lt;String&gt; <span class="hljs-title">getScreenUrls</span><span class="hljs-params">()</span></span>;
+    <span class="hljs-comment">// Get the category's display name.</span>
+    <span class="hljs-function"><span class="hljs-keyword">public</span> String <span class="hljs-title">getDisplayName</span><span class="hljs-params">()</span></span>;
+    <span class="hljs-comment">// Get the category's remote icon.</span>
+    <span class="hljs-function"><span class="hljs-keyword">public</span> String <span class="hljs-title">getDisplayIcon</span><span class="hljs-params">()</span></span>;
+}</code></pre><h4 id="_screensentry_-class"><em>ScreensEntry</em> Class</h4>
+<pre><code class="hljs java"><span class="hljs-comment">// A screen entry</span>
+<span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">ScreensEntry</span> </span>{
+    <span class="hljs-comment">// Get the screen url.</span>
+    <span class="hljs-function"><span class="hljs-keyword">public</span> String <span class="hljs-title">getScreenUrl</span><span class="hljs-params">()</span></span>;
+    <span class="hljs-comment">// Get the screen id.</span>
+    <span class="hljs-function"><span class="hljs-keyword">public</span> String <span class="hljs-title">getScreenId</span><span class="hljs-params">()</span></span>;
+    <span class="hljs-comment">// Get the screen's display name.</span>
+    <span class="hljs-function"><span class="hljs-keyword">public</span> String <span class="hljs-title">getDisplayName</span><span class="hljs-params">()</span></span>;
+    <span class="hljs-comment">// Get the screen's remote icon.</span>
+    <span class="hljs-function"><span class="hljs-keyword">public</span> String <span class="hljs-title">getDisplayIcon</span><span class="hljs-params">()</span></span>;
+}</code></pre><h2 id="quixey-widgets">Quixey Widgets</h2>
+<p>Quixey Widgets represent discrete functional components that can be used to enhance your application Quixey search, app actions and content discovery.  As mentioned in the layout creation integration steps above, Quixey widgets are made available through the supplied library build variants.  The following describe the list of available widgets.</p>
+<h3 id="search-widget">Search Widget</h3>
+<p>Provides components for creating a basic search experience including a Search Bar and a Search Results view.</p>
+<p><strong>Name:</strong> com.quixey.android.ui.custom.widget.DeepViewSerp<br><strong>Library:</strong> sdk-standard-release.aar<br><strong>Example:</strong></p>
+<pre><code class="hljs xml"><span class="hljs-tag">&lt;<span class="hljs-name">com.quixey.android.ui.custom.widget.DeepViewSerp</span>
+    <span class="hljs-attr">android:id</span>=<span class="hljs-string">"@+id/search_serp"</span>
+    <span class="hljs-attr">android:layout_width</span>=<span class="hljs-string">"match_parent"</span>
+    <span class="hljs-attr">android:layout_height</span>=<span class="hljs-string">"match_parent"</span>
+    <span class="hljs-attr">app:includeSearchBar</span>=<span class="hljs-string">"true"</span>
+    <span class="hljs-attr">app:serpSoln</span>=<span class="hljs-string">"@string/solution_tag"</span>
+    <span class="hljs-attr">android:visibility</span>=<span class="hljs-string">"gone"</span>/&gt;</span></code></pre><p><strong>Options:</strong></p>
+<ul>
+<li><code>includeSearchBar</code> — set to <em>true</em> to show a search bar control, <em>false</em> to use just the results view</li>
+<li><code>serpSoln</code> — used for partner analytics. Specifies a unique string to represent the widget placement in the user interface and to distinguish it from other instances of the widget in the app.</li>
+</ul>
+<h3 id="quixey-lite-view-widget">Quixey Lite View Widget</h3>
+<p>Provides all the features of the Search Widget while adding device search, supports a default view of user-interest Deep View Cards, and displays Now cards for calendar events, traffic updates, app usage, currency conversion, and other features. </p>
+<p><strong>Name:</strong> com.quixey.screens.library.ui.custom.widget.QuixeyScreenLite<br><strong>Library:</strong> screens-lite-release.aar<br><strong>Example:</strong></p>
+<pre><code class="hljs xml"><span class="hljs-tag">&lt;<span class="hljs-name">com.quixey.screens.library.ui.custom.widget.QuixeyScreenLite</span>
+    <span class="hljs-attr">android:id</span>=<span class="hljs-string">"@+id/quixey_screen"</span>
+    <span class="hljs-attr">android:layout_width</span>=<span class="hljs-string">"match_parent"</span>
+    <span class="hljs-attr">android:layout_height</span>=<span class="hljs-string">"match_parent"</span>
+    <span class="hljs-attr">android:background</span>=<span class="hljs-string">"@color/screen_app_background"</span>
+    <span class="hljs-attr">app:searchBar</span>=<span class="hljs-string">"true"</span>
+    <span class="hljs-attr">app:nowCards</span>=<span class="hljs-string">"true"</span>
+    <span class="hljs-attr">app:titleImage</span>=<span class="hljs-string">"@drawable/ic_splash_logo_bigger"</span>
+    <span class="hljs-attr">android:visibility</span>=<span class="hljs-string">"gone"</span>
+    /&gt;</span></code></pre><p><strong>Options:</strong></p>
+<ul>
+<li><code>searchBar</code> — set to <em>true</em> to show a search bar control, <em>false</em> to use just the results view</li>
+<li><code>nowCards</code> — set to <em>true</em> to show a search bar control, <em>false</em> to use just the results view</li>
+<li><code>titleImage</code> — used to set a drawable title.</li>
+</ul>
+<h3 id="quixey-full-widget">Quixey Full Widget</h3>
+<p>Provides all the features of the Quixey Lite View Widget while adding Deep View Card history, saving cards by user profile, and a brief tutorial.</p>
+<p><strong>Name:</strong> com.quixey.screens.library.ui.custom.widget.QuixeyScreen<br><strong>Library:</strong> discovery-release.aar<br><strong>Example:</strong></p>
+<pre><code class="hljs xml"><span class="hljs-tag">&lt;<span class="hljs-name">com.quixey.screens.library.ui.custom.widget.QuixeyScreen</span>
+    <span class="hljs-attr">android:id</span>=<span class="hljs-string">"@+id/quixey_screen"</span>
+    <span class="hljs-attr">android:layout_width</span>=<span class="hljs-string">"match_parent"</span>
+    <span class="hljs-attr">android:layout_height</span>=<span class="hljs-string">"match_parent"</span>
+    <span class="hljs-attr">android:background</span>=<span class="hljs-string">"@color/screen_app_background"</span>
+    <span class="hljs-attr">android:visibility</span>=<span class="hljs-string">"gone"</span>
+    /&gt;</span></code></pre><h3 id="quixey-actions-widget">Quixey Actions Widget</h3>
+<p>Provides available actions for the apps installed on the device.  Actions can be as simple as toggling Android settings or complex such as opening your favorite finance app directly into your checking account.  The widget is implemented as an Android Cardview component.</p>
+<p><strong>Name:</strong> com.quixey.android.ui.deepview.container.view.ActionCard<br><strong>Library:</strong> screens-lite-release.aar, discovery-release.aar<br><strong>Example:</strong></p>
+<pre><code class="hljs xml"><span class="hljs-tag">&lt;<span class="hljs-name">com.quixey.android.ui.deepview.container.view.ActionCard</span>
+    <span class="hljs-attr">android:id</span>=<span class="hljs-string">"@+id/action_card"</span>
+    <span class="hljs-attr">android:layout_width</span>=<span class="hljs-string">"match_parent"</span>
+    <span class="hljs-attr">android:layout_height</span>=<span class="hljs-string">"wrap_content"</span>
+    <span class="hljs-attr">app:actionType</span>=<span class="hljs-string">"all"</span>
+    /&gt;</span></code></pre><p><strong>Options:</strong></p>
+<ul>
+<li><code>actionType</code> — sets the type of actions displayed in the card.  Allowable values include:<ul>
+<li><code>"device"</code> — only show device actions</li>
+<li><code>"app"</code> — only show app actions</li>
+<li><code>"all"</code> — show both device AND app actions</li>
+</ul>
+</li>
+</ul>
+  </div>
+</div>
+<footer id="footer">
+  <div class="mui-container-fluid">
+    <nav class="mui-row" role="navigation">
+      <div class="mui-col-sm-10 mui-col-sm-offset-1">
+        <ul class="mui-list--inline mui--text-body2 mui--text-light">
+          <li><a href="http://www.quixey.com/privacy">Privacy Policy</a></li>
+          <li><a href="http://www.quixey.com/terms">Terms of Service</a></li>
+          <li><a href="https://twitter.com/quixey"><i class="fa fa-twitter" aria-hidden="true"></i>&nbsp;Twitter</a></li>
+          <li><a href="https://www.facebook.com/quixey"><i class="fa fa-facebook-official" aria-hidden="true"></i>&nbsp;Facebook</a></li>
+        </ul>
+        <div class="mui--text-caption mui--text-light">&copy; 2016 Quixey. <span class="buildinfo"> Production build, version 0.1.0</span></div>
+      </div>
+    </nav>
+  </div>
+</footer>
+    <script src="/assets/scripts/vendor-e836acbc9e.js"></script>
+    <script src="/assets/scripts/app-1a3a19fb04.js"></script>
+  </body>
+</html>

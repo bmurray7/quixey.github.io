@@ -1,10 +1,175 @@
-Grab your favorite text editor and add an index.html file to your project:
-
-index.html
-<!DOCTYPE html>
-<html>
-<body>
-<h1>Hello World</h1>
-<p>I'm hosted with GitHub Pages.</p>
-</body>
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <meta name="viewport" content="width=device-width,user-scalable=no,initial-scale=1,maximum-scale=1">
+      <title>Product Overview - Quixey Documentation</title>
+      <link rel="canonical" href="http://docs.quixey.com/">
+      <meta name="author" content="Quixey">
+    <meta property="og:url" content="http://docs.quixey.com/">
+    <meta property="og:title" content="Quixey Documentation">
+    <meta property="og:image" content="http://docs.quixey.com///">
+    <link rel="shortcut icon" type="image/x-icon" href="/assets/images/favicon.ico">
+    <link rel="icon" type="image/x-icon" href="/assets/images/favicon.ico">
+    <link href="//fonts.googleapis.com/css?family=Roboto:300,400,500,700" rel="stylesheet">
+    <link href="//cdnjs.cloudflare.com/ajax/libs/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="/assets/styles/app-6b2afac0d7.css">
+    <link rel="stylesheet" href="/assets/styles/vendor-bf6c14925e.css">
+  </head>
+  <body>
+    <!--[if lt IE 9]>
+    <p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
+    <![endif]-->
+<div id="sidedrawer" class="mui--no-user-select">
+  <div class="q-logo">
+    <a href="http://www.quixey.com"><img src="/assets/quixey_blue-56e6756d00.png"></a>
+    Docs
+  </div>
+  <div class="mui-divider"></div>
+  <ul id="q-nav">
+      <li>
+        <a class="q-navitem active" href=".">Product Overview</a>
+      <ul class="q-toc">
+        <li class="q-toc__item"><a href="#introduction" class="q-toc__link">Introduction</a>
+        </li>
+        <li class="q-toc__item"><a href="#product-features" class="q-toc__link">Product Features</a>
+        </li>
+        <li class="q-toc__item"><a href="#product-comparison" class="q-toc__link">Product Comparison</a>
+        </li>
+        <li class="q-toc__item"><a href="#quixey-actions" class="q-toc__link">Quixey Actions</a>
+        </li>
+      </ul>
+      </li>
+      <li>
+        <a class="q-navitem" href="android_sdk/">Android SDK</a>
+      </li>
+      <li>
+        <a class="q-navitem" href="api_reference/">DVC API</a>
+      </li>
+      <li>
+        <a class="q-navitem" href="qapps/">App Reference</a>
+      </li>
+      <li>
+        <a class="q-navitem" href="schema_reference/">DVC Entity Schemas</a>
+      </li>
+  </ul>
+  <section class="mui--text-center q-download mui--divider-top">
+    <p class="mui--text-white">Download Quixey's Search App</p>
+    <a href="https://play.google.com/store/apps/details?id=com.quixey.android.search">
+      <img alt="Android app on Google Play" src="https://developer.android.com/images/brand/en_app_rgb_wo_45.png">
+    </a>
+  </section>
+</div>
+<header id="header" class="q-header">
+<div class="mui-appbar mui--appbar-line-height mui--z1">
+    <div class="mui-container-fluid q-flex">
+      <div class="q-flex__cell q-flex__cell--shrink">
+          <a class="sidedrawer-toggle mui--visible-xs-inline-block mui--visible-sm-inline-block js-show-sidedrawer">☰</a>
+          <a class="sidedrawer-toggle mui--hidden-xs mui--hidden-sm js-hide-sidedrawer">☰</a>
+      </div>
+      <div class="q-flex__cell q-flex__cell--stretch mui--text-title">
+        <span class="q-flex__ellipsis">Product Overview</span>
+      </div>
+      <div class="q-flex__cell q-flex__cell--shrink mui--text-right">
+        <div class="q-header-search">
+            <label for="q-search" class="fa fa-search q-header-search__icon"></label>
+            <input type="search" class="q-header-search__input" placeholder="Search..." autocomplete="off" id="q-search">
+        </div>
+      </div>
+    </div>
+  </div>
+</header>
+<div id="content-wrapper">
+  <div class="mui-container-fluid page">
+    <h2 id="introduction">Introduction</h2>
+<p>Quixey Search is a mobile product for retrieving content quickly interacting with apps. Users can interact with the product with explicit queries describing specific needs as well as implicit needs based on user context. Many mobile needs enable users to perform actions in the physical world. The product helps users accomplish these action-based needs more quickly and easily.</p>
+<h2 id="product-features">Product Features</h2>
+<h3 id="search">Search</h3>
+<p>A user is able to invoke the search feature-set from any state in the Quixey app. Search input consists of two possible options: entering a query using the keyboard, or using the device’s microphone to speak a search query.</p>
+<h3 id="device-search">Device Search</h3>
+<p>As the user enters a query, content available on the device such as installed apps, events and contacts are matched to the user’s query and rendered virtually instantly. Mobile users no longer have expectations of where content and information is physically stored. Some needs, such as “open a particular app” or “call a particular person” can be fulfilled immediately by Device Search, and furthers the goal of minimizing the time required to complete an action.</p>
+<h3 id="autosuggest">Autosuggest</h3>
+<p>If no on-device content is relevant, the user will see autosuggest results which allows the user to save time typing by selecting recent queries or likely complete queries based on the user’s partial query. Autosuggest is improved by using query logs, knowledge, and data feedback to predict a user’s information need without requiring the user to type a textual query completely. This is especially valuable on mobile, where typing is often slower than on desktop devices. </p>
+<h3 id="deep-search-app-search">Deep Search / App Search</h3>
+<p>If a user selects an autosuggest result, or if the user submits the query by tapping enter, the user will see a single SERP returning Deep View Cards for both App Search and Deep Search results. These DVCs are served by our core DVC Search online service, consisting primarily of the following stages: </p>
+<ul>
+<li>Understanding the user’s query</li>
+<li>Retrieving either particular pieces of content or predicting * particular parts of apps relevant to the user’s possible needs</li>
+<li>Ranking these results<br>Rendering the best possible Deep View Card for each result</li>
+</ul>
+<h3 id="universal-search">Universal Search</h3>
+<p>Mobile users rarely consider whether or not the content or information is located physically on the mobile device or in the cloud. The popularity of music streaming services and other cloud-based applications proves that abstracting the data layer from the users’ concerns delivers utility. </p>
+<p>Universal Search is our key offering which mixes and ranks content from Deep, App and Device search components; ranking DVCs by relevance, agnostic to which search component retrieved the result, reflects this new reality of mobile computing and matches users’ expectations.</p>
+<h3 id="richer-deep-view-cards">Richer Deep View Cards</h3>
+<p>Deep View Cards deliver value to the user by presenting the most fresh and rich content related to an information need to help the user consider a result and how an App can fulfill a given need. Most importantly, a user can tap on a DVC and navigate to the most relevant part of the corresponding app.</p>
+<p>A user will often see DVCs that are dynamic and feature real-time content extracted directly from the app, web or an API. For example, if a user enters a query such as “gs stock price”, “weather” or “taxi”, the DVC is rendered with up to the second freshness sourced directly from the app.</p>
+<h3 id="contextual-discovery">Contextual Discovery</h3>
+<p>A first-time user is onboarded through a simple flow which allows the user to configure several topics which are of interest to the them. </p>
+<p>For existing users or after the onboarding process a user will see their home screen featuring DVCs that are relevant to the user based on trending DVCs for their location. DVCs will be ranked by relevancy based on preferences, previous activities and selected topics.</p>
+<p>In addition to the home screen, a user can navigate to other screens with trending, popular or informational DVCs related to topics likely to be relevant to the user’s interests and needs.</p>
+<h3 id="actions">Actions</h3>
+<p>A user can speak or type a query such as “play music” which implies a need that can be formalized as “open my favorite music app, and play my most recent or favorite music”. Quixey is able to understand this need, and return a DVC allowing the user to perform this action. </p>
+<p>Actions usually involve not only navigating to a deep link, but also interacting with an app in a subtle or unique way. Quixey has a technical solution for this problem, and when a user taps on an action DVC in Quixey, Quixey is able to perform the action magically.</p>
+<ul>
+<li>Personal — Many actions involve interacting with apps which result in real-life results, such as hailing a cab or ordering food, and other actions involve sensitive personal data. Quixey is able to handle needs such as “open portfolio” and “order thai food” locally on the device, and navigate the user to potentially personal information without ever compromising privacy or security.</li>
+<li>Bread Crumb Trail — Quixey’s SDK features proprietary Bread-crumb Trail (BCT) technology that is able to navigate users to any state with an app, regardless of the existence of deep links. This significantly expands the coverage of DVC navigation relative to other deep linking solutions, and links the user’s directly to the most relevant action, saving users time to perform actions (TTA).</li>
+</ul>
+<h2 id="product-comparison">Product Comparison</h2>
+<div class="mui-panel" style="overflow-x:auto"><table class="mui-table mui-table--bordered"><thead><tr>
+<th>Feature</th>
+<th style="text-align:center">SDK</th>
+<th style="text-align:center">API</th>
+</tr>
+</thead><tbody><tr>
+<td>App/Deep Search</td>
+<td style="text-align:center"><i class="fa fa-check fa-2x" aria-hidden="true"></i></td>
+<td style="text-align:center"><i class="fa fa-check fa-2x" aria-hidden="true"></i></td>
+</tr>
+<tr>
+<td>Universal Search</td>
+<td style="text-align:center"><i class="fa fa-check fa-2x" aria-hidden="true"></i></td>
+<td style="text-align:center"><i class="fa fa-check fa-2x" aria-hidden="true"></i>  </td>
+</tr>
+<tr>
+<td>Autosuggest</td>
+<td style="text-align:center"><i class="fa fa-check fa-2x" aria-hidden="true"></i></td>
+<td style="text-align:center"></td>
+</tr>
+<tr>
+<td>Device Search</td>
+<td style="text-align:center"><i class="fa fa-check fa-2x" aria-hidden="true"></i></td>
+<td style="text-align:center"></td>
+</tr>
+<tr>
+<td>Contextual Discovery</td>
+<td style="text-align:center"><i class="fa fa-check fa-2x" aria-hidden="true"></i></td>
+<td style="text-align:center"></td>
+</tr>
+<tr>
+<td>Actions</td>
+<td style="text-align:center"><i class="fa fa-check fa-2x" aria-hidden="true"></i></td>
+<td style="text-align:center"><i class="fa fa-check fa-2x" aria-hidden="true"></i></td>
+</tr>
+</tbody></table></div><h2 id="quixey-actions">Quixey Actions</h2>
+  </div>
+</div>
+<footer id="footer">
+  <div class="mui-container-fluid">
+    <nav class="mui-row" role="navigation">
+      <div class="mui-col-sm-10 mui-col-sm-offset-1">
+        <ul class="mui-list--inline mui--text-body2 mui--text-light">
+          <li><a href="http://www.quixey.com/privacy">Privacy Policy</a></li>
+          <li><a href="http://www.quixey.com/terms">Terms of Service</a></li>
+          <li><a href="https://twitter.com/quixey"><i class="fa fa-twitter" aria-hidden="true"></i>&nbsp;Twitter</a></li>
+          <li><a href="https://www.facebook.com/quixey"><i class="fa fa-facebook-official" aria-hidden="true"></i>&nbsp;Facebook</a></li>
+        </ul>
+        <div class="mui--text-caption mui--text-light">&copy; 2016 Quixey. <span class="buildinfo"> Production build, version 0.1.0</span></div>
+      </div>
+    </nav>
+  </div>
+</footer>
+    <script src="/assets/scripts/vendor-e836acbc9e.js"></script>
+    <script src="/assets/scripts/app-1a3a19fb04.js"></script>
+  </body>
 </html>
