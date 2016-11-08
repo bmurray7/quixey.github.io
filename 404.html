@@ -1,0 +1,68 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <meta name="viewport" content="width=device-width,user-scalable=no,initial-scale=1,maximum-scale=1">
+      <title></title>
+    <meta property="og:url" content="">
+    <meta property="og:title" content="">
+    <meta property="og:image" content="//">
+    <link rel="shortcut icon" type="image/x-icon" href="/assets/images/favicon.ico">
+    <link rel="icon" type="image/x-icon" href="/assets/images/favicon.ico">
+    <link href="//fonts.googleapis.com/css?family=Roboto:300,400,500,700" rel="stylesheet">
+    <link href="//cdnjs.cloudflare.com/ajax/libs/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet">
+    <link href="/assets/styles/app-ca7e571696.css" rel="stylesheet">
+    <link href="/assets/styles/vendor-163a1ce86f.css" rel="stylesheet">
+  </head>
+  <body class="q-layout">
+    <!--[if lt IE 11]>
+    <p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
+    <![endif]-->
+<section class="mui-container">
+  <div class="q-dvcard mui-panel">
+    <div class="q-dvcard__title">
+      <span class="mui--pull-left"><img src="/assets/images/quixey_blue_20px-bf6f88cae5.png" width="20px" height="20px"> Quixey Docs</span><span class="mui--pull-right">Unexpected</span>
+      <div class="mui--clearfix"></div>
+    </div>
+    <div class="q-dvcard__body">
+      <span class="mui--pull-left">
+        <h1>404 - File Not found</h1>
+        <p>We couldn't find your page. Possible reasons include:</p>
+        <ul>
+          <li>The page has moved</li>
+          <li>The page no longer exists</li>
+          <li>You followed a broken link</li>
+          <li>The browser ate your link</li>
+        </ul>
+        <p>No worries.  These might help you get to your destination.</p>
+      </span>
+      <span class="mui--pull-right q-dvcard__image"><i class="fa fa-frown-o" aria-hidden="true"></i></span>
+      <div class="mui--clearfix"></div>
+      <div class="q-dvcard__actions">
+        <span><a href="/index.html" class="mui-btn mui-btn--primary"><i class="fa fa-book" aria-hidden="true"></i> Quixey Docs</a></span>
+        <span><a href="http://www.quixey.com" class="mui-btn q-dvcard__btn"><i class="fa fa-home" aria-hidden="true"></i> Quixey Home</a></span>
+      </div>
+    </div>
+  </div>
+</section>
+<script>
+  const emoEl = document.querySelector('.q-dvcard__image .fa');
+  const actionsEl = document.querySelector('.q-dvcard__actions');
+  actionsEl.addEventListener('mouseover', (ev) => {
+    if (ev.target.tagName.match(/^[AI]$/)) {
+      emoEl.classList.remove('fa-frown-o');
+      emoEl.classList.add('fa-smile-o');
+    }
+  });
+  actionsEl.addEventListener('mouseout', (ev) => {
+    if (ev.target.tagName.match(/^[AI]$/)) {
+      emoEl.classList.remove('fa-smile-o');
+      emoEl.classList.add('fa-frown-o');
+    }
+  });
+</script>
+    <script src="/assets/scripts/vendor-ecf276ef5f.js"></script>
+    <script src="/assets/scripts/app-afb7d0a37f.js"></script>
+  </body>
+</html>

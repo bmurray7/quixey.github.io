@@ -1,0 +1,181 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <meta name="viewport" content="width=device-width,user-scalable=no,initial-scale=1,maximum-scale=1">
+      <title>User Guide - Quixey Documentation</title>
+      <link rel="canonical" href="http://docs.quixey.com/">
+      <meta name="author" content="Quixey">
+    <meta property="og:url" content="http://docs.quixey.com/">
+    <meta property="og:title" content="Quixey Documentation">
+    <meta property="og:image" content="http://docs.quixey.com///">
+    <link rel="shortcut icon" type="image/x-icon" href="/assets/images/favicon.ico">
+    <link rel="icon" type="image/x-icon" href="/assets/images/favicon.ico">
+    <link href="//fonts.googleapis.com/css?family=Roboto:300,400,500,700" rel="stylesheet">
+    <link href="//cdnjs.cloudflare.com/ajax/libs/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet">
+    <link href="/assets/styles/app-ca7e571696.css" rel="stylesheet">
+    <link href="/assets/styles/vendor-163a1ce86f.css" rel="stylesheet">
+  </head>
+  <body class="q-layout">
+    <!--[if lt IE 11]>
+    <p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
+    <![endif]-->
+<header class="q-header mui-appbar mui--appbar-line-height mui--z1">
+  <div class="q-header-branding">
+    <div class="q-header__btn js-show-sitenavbar"><i class="fa fa-bars"></i></div>
+    <a href="http://www.quixey.com"><img src="/assets/images/quixey_white-a685918305.png"></a>
+  </div>
+  <div class="q-header-details">
+    <span class="title">iOS SDK > User Guide</span>
+  </div>
+  <div class="q-header-actions">
+      <label for="q-search" class="q-header__btn"><i class="fa fa-search"></i></label>
+      <input type="search" class="q-header-search__input" placeholder="Search..." autocomplete="off" id="q-search">
+    <div class="q-header__btn js-show-pagenavbar" title="Show Page Contents"><i class="fa fa-list"></i></div>
+  </div>
+</header>
+<main class="q-body">
+  <nav class="q-sitenav q-nav mui--no-user-select">
+    <div class="q-logo">
+      <a href="http://www.quixey.com"><img src="/assets/images/quixey_blue-56e6756d00.png"></a>
+      <span>Docs</span>
+    </div>
+    <label class="q-nav__title" for="toc">Site Contents</label>
+    <ul class="q-nav__list">
+    <li class="q-nav__item">
+        <a class="q-nav__link" href="../..">Product Overview</a>
+    </li>
+    <li class="q-nav__item">
+        <a class="q-nav__link" href="../../content_library/">Quixey Content Reference</a>
+    </li>
+    <li class="q-nav__item">
+        <strong class="q-nav__folder">Android SDK</strong>
+        <ul class="q-nav__list">
+    <li class="q-nav__item">
+        <a class="q-nav__link" href="../../android_sdk/user_guide/">User Guide</a>
+    </li>
+        </ul>
+    </li>
+    <li class="q-nav__item">
+        <strong class="q-nav__folder">iOS SDK</strong>
+        <ul class="q-nav__list">
+    <li class="q-nav__item active">
+        <a class="q-nav__link active" href=".">User Guide</a>
+    </li>
+        </ul>
+    </li>
+    <li class="q-nav__item">
+        <strong class="q-nav__folder">API</strong>
+        <ul class="q-nav__list">
+    <li class="q-nav__item">
+        <a class="q-nav__link" href="../../api/user_guide/">User Guide</a>
+    </li>
+    <li class="q-nav__item">
+        <a class="q-nav__link" href="../../api/entity_schemas/">Entity Schema Reference</a>
+    </li>
+        </ul>
+    </li>
+    <li class="q-nav__item">
+        <a class="q-nav__link" href="../../downloads/">Product Downloads</a>
+    </li>
+    </ul>
+  </nav>
+  <article class="q-content">
+    <h1>Quixey iOS DeepLink SDK</h1>
+<h2 id="overview">Overview</h2>
+<p>The Quixey iOS Router SDK is a set of libraries that allow iOS developers to enable Quixey Deep Link and BCT capabilities to their applications.</p>
+<h2 id="prerequisites">Prerequisites</h2>
+<ul>
+<li>iOS 8+</li>
+<li>Xcode</li>
+</ul>
+<div class="q-admonition note">
+<p><strong>App Registration Required</strong>.  Please contact Quixey directly to obtain your Quixey App ID.  You will need to provide your bundle identifier and application version.</p>
+</div>
+<h2 id="installation-steps">Installation Steps</h2>
+<ol>
+<li>
+<p>Download the latest SDK <a href="/downloads">here</a>.</p>
+</li>
+<li>
+<p>Drag and drop <code>QuixeySDK.framework</code> into Xcode project. Check the <em>Copy Items if needed</em> option in the dialog and click Finish.</p>
+</li>
+<li>
+<p>Select the project file in the left pane.</p>
+<ul>
+<li>Under <em>General</em> tab check if the sdk is listed in the <em>Embedded Binaries</em> section. If not, click the plus (+) button and select QuixeySDK.framework.</li>
+<li>Under <em>Info</em> tab navigate to the <em>URL Types</em> section. Click the plus (+) button and set value for <em>URL Schemes</em> as
+qx{QUIXEY_APP_ID} with your Quixey app id and the prefix qx. Example: qxyelpapp</li>
+</ul>
+</li>
+<li>
+<p>In <code>application:didFinishLaunchingWithOptions launchOptions:</code> add these following lines of code</p>
+<pre class="hljs"><code class="">UIApplication.registerSelectorToPopBackToHome(){
+   // Code to get back to home screen
+}
+</code></pre>
+</li>
+<li>
+<p>Don&apos;t forget to import the umbrella header <code>#import &lt;QuixeySDK/QuixeySDK.h&gt;</code></p>
+</li>
+<li>
+<p>Build your app to make sure that SDK was installed correctly.</p>
+</li>
+</ol>
+<h2 id="widgetsactions-covered">Widgets/Actions Covered</h2>
+<ul>
+<li>UITableViewCell</li>
+<li>UICollectionViewCell</li>
+<li>UIButton</li>
+<li>UITextField</li>
+<li>UIControl</li>
+<li>UISearchBar</li>
+<li>UIView with a tap gesture recognizer</li>
+<li>Segue</li>
+</ul>
+<h2 id="error-alerts">Error alerts</h2>
+<p>In case of errors during replay, SDK will throw alert stating the reason for failure. Possible error situations are</p>
+<ul>
+<li>Invalid/Outdated BCTs</li>
+<li>Unable to parse the input from search application</li>
+<li>Unable to download the BCTs from server</li>
+<li>Unable to perform replay</li>
+</ul>
+    <div class="q-content__age">Last Updated: November 7th 2016</div>
+    <footer class="q-footer">
+  <div class="mui-container-fluid">
+    <nav class="mui-row" role="navigation">
+      <div class="mui-col-sm-10 mui-col-sm-offset-1">
+        <ul class="mui-list--inline mui--text-body2 mui--text-light">
+          <li><a href="http://www.quixey.com/privacy">Privacy Policy</a></li>
+          <li><a href="http://www.quixey.com/terms">Terms of Service</a></li>
+          <li><a href="https://twitter.com/quixey"><i class="fa fa-twitter" aria-hidden="true"></i>&nbsp;Twitter</a></li>
+          <li><a href="https://www.facebook.com/quixey"><i class="fa fa-facebook-official" aria-hidden="true"></i>&nbsp;Facebook</a></li>
+        </ul>
+        <div class="mui--text-caption mui--text-light">&copy; 2016 Quixey. <span class="buildinfo"> Production build, version 0.3.0</span></div>
+      </div>
+    </nav>
+  </div>
+</footer>
+  </article>
+  <nav class="q-pagenav q-nav mui--no-user-select">
+    <label class="q-nav__title" for="toc"><i class="fa fa-list" aria-hidden="true"></i> Page Contents</label>
+    <ul class="q-nav__list">
+  <li class="q-nav__item"><a href="#overview" class="q-nav__link" data-q-marked="0">Overview</a>
+  </li>
+  <li class="q-nav__item"><a href="#prerequisites" class="q-nav__link" data-q-marked="0">Prerequisites</a>
+  </li>
+  <li class="q-nav__item"><a href="#installation-steps" class="q-nav__link" data-q-marked="0">Installation Steps</a>
+  </li>
+  <li class="q-nav__item"><a href="#widgetsactions-covered" class="q-nav__link" data-q-marked="0">Widgets/Actions Covered</a>
+  </li>
+  <li class="q-nav__item"><a href="#error-alerts" class="q-nav__link" data-q-marked="0">Error alerts</a>
+  </li>
+    </ul>
+  </nav>
+</main>
+    <script src="/assets/scripts/vendor-ecf276ef5f.js"></script>
+    <script src="/assets/scripts/app-afb7d0a37f.js"></script>
+  </body>
+</html>
